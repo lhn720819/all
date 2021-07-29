@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  p {
+    color: red;
+  }
+}
+
+// npm install -g less
+// lessc -v
+// lessc test.less
+// lessc test.less xx.css
+
+// easyless  autoprefix map
+
+// cmd 常见命令
+
+// vscode easy less
+
+// lessc -v
+// lessc --version
+
+// lessc -h --help
+
+// 变量
+@width: 10px;
+@red: rgb(128, 13, 13);
+
+span {
+  border: @width solid @red;
+}
+
+// 混合
+.bordered {
+  border: @width solid @red;
+}
+
+.box {
+  .bordered;
+  background-color: lightblue;
+  &::before {
+    content: "";
+    .bordered;
+  }
+}
+
+/* -----类似函数复用----- */
+
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+
+#menu a {
+  color: #111;
+  .bordered();
+}
+
+.post a {
+  color: red;
+  .bordered();
+}
+
+/* 嵌套 */
+#header {
+  color: black;
+  .navigation {
+    font-size: 12px;
+  }
+  .logo {
+    width: 300px;
+  }
+}
+
+// & 表示当前选择器的父级
+
+/* 清除浮动 */
+
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: "";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  :hover {
+    color: red;
+  }
+}
+
+// @规则嵌套和冒泡
+.component {
+  width: 300px;
+  @media (min-width: 768px) {
+    width: 600px;
+  }
+  @media (min-width: 1280px) {
+    width: 800px;
+  }
+  @keyframes xxx {
+    from {
+      width: 100px;
+    }
+    to {
+      width: 200px;
+    }
+  }
+}
+
+//
+/* 算术运算符 */
+
+@conversion-1: 5cm + 10mm;
+@base: 5%;
+@color: #224488 / 2; //结果是 #112244
+
+@var: 50vh/2;
+
+span {
+  width: @conversion-1;
+  height: @base * 2;
+  background-color: #112244 + #111;
+  // #112244 + #111111
+  width: calc(50% + (@var - 20px));
+}
+
+// 结果是 calc(50% + (25vh - 20px))
+
+/* 转义 */
+// @xxx: red;
+// @yyy: ~"background";
+// span {
+//   color: @xxx;
+//   @yyy: green;
+//   @yyy {
+//     width: 10px;
+//   }
+// }
+
+@yyy: ~"background";
+// @min768: ~"(min-width: 768px)";
+@min768: (min-width: 769px);
+
+.element {
+  @media @min768 {
+    font-size: 1.2rem;
+  }
+  @media @yyy {
+    color: red;
+  }
+  @yyy {
+    color: red;
+  }
+}
+
+/* 函数 */
+@base: #f04615;
+@width: 0.5;
+
+.class {
+  width: percentage(@width); // returns `50%`
+  color: saturate(@base, 5%);
+  background-color: spin(lighten(@base, 25%), 8);
+}
+
+/* 命名空间和访问符 */
+
+// 混合 带上括号 不是class 是函数
+// .border-box {
+//   border: 1px solid red;
+// }
+// .border-box() {
+//   border: 1px solid red;
+// }
+/* 带参数的混合 */
+.border-box(@w) {
+  border: @w solid red;
+}
+
+.test-box {
+  background-color: lightblue;
+  // .border-box();
+  .border-box(3px);
+}
+
+/*  */
+.button() {
+  color: red;
+}
+
+#bundle() {
+  .button {
+    color: black;
+  }
+}
+
+.box {
+  // .button();
+  #bundle.button;
+}
+
+/* 映射 map */
+#colors() {
+  primary: blue;
+  secondary: green;
+}
+.button {
+  color: #colors[primary];
+  border: 1px solid #colors[secondary];
+}
+
+@w100: 100%;
+@w50: 50%;
+
+.test {
+  width: @w100;
+  height: @w50;
+}
+
+#wrap () {
+  w100: 100%;
+  w50: 50%;
+}
+.test {
+  width: #wrap[w100];
+  height: #wrap[w50];
+}
+
+/* 作用域 */
+@var: red;
+
+#page {
+  // @var: white;
+  #header {
+    // @var: orange;
+    color: @var;
+  }
+}
+
+/* 块注释 会生成在 css文件  
+行注释不出现在css文件 */
+// 行注释
+
+@import "./colors.less";
+
+span {
+  color: @red;
+  &:hover {
+    color: @red-active;
+  }
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.9.0/css/all.min.css" />
+    <script src="./brands.js"></script>
+    <style>
+      .preselected {
+        display: flex;
+        font-size: 56px;
+      }
+      .preselected i {
+        margin: 10px;
+      }
+      .preselected i.draged {
+        opacity: 0.3;
+      }
+
+      .stage li {
+        display: flex;
+        /* justify-content: center; */
+      }
+      .stage li h3 {
+        width: 40%;
+        text-align: right;
+        margin-right: 20px;
+      }
+      .stage li div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        font-size: 56px;
+      }
+      @keyframes myxxx {
+        from {
+          transform: scale(0.95);
+          /* border-width: 1px; */
+          box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+        }
+        to {
+          transform: scale(1);
+          /* border-width: 3px; */
+          box-shadow: 0 0 80px 0 rgba(0, 0, 0, 0.3);
+        }
+      }
+      .stage li div.active {
+        animation: myxxx 0.8s ease-in-out infinite alternate;
+      }
+    </style>
+  </head>
+  <body style="background-color: #eee">
+    <header>
+      <span class="c">0</span>正确 / <span class="s">0</span>步骤
+      <button class="replay">再玩一次</button>
+    </header>
+
+    <section class="preselected"></section>
+    <ul class="stage"></ul>
+    <script>
+      var preselected = document.querySelector(".preselected");
+      var stage = document.querySelector(".stage");
+
+      //   创建预选元素
+      function createPreSelected(brands) {
+        brands.forEach(function (item) {
+          var iDom = document.createElement("i");
+          iDom.className = "fab fa-" + item.iconName;
+          iDom.style.color = item.color;
+          iDom.dataset.xxx = item.iconName;
+
+          preselected.appendChild(iDom);
+
+          //
+          iDom.draggable = "true";
+          iDom.ondragstart = function (event) {
+            event.dataTransfer.setData("text", event.target.dataset.xxx);
+          };
+        });
+      }
+
+      // 创建 stage 元素
+      function createStage(brands) {
+        brands
+          .sort(function (a, b) {
+            var nameA = a.brandName.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.brandName.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+
+            // names must be equal
+            return 0;
+          })
+          .forEach(function (item) {
+            var liDom = document.createElement("li");
+
+            var h3Dom = document.createElement("h3");
+            var divDom = document.createElement("div");
+            h3Dom.innerText = item.brandName;
+            divDom.dataset.xxx = item.iconName;
+
+            liDom.appendChild(h3Dom);
+            liDom.appendChild(divDom);
+
+            stage.appendChild(liDom);
+
+            //
+            divDom.ondragover = function (e) {
+              e.preventDefault();
+            };
+
+            divDom.ondrop = dropHandler;
+
+            divDom.ondragenter = function (event) {
+              this.classList.add("active");
+              console.log("enter");
+            };
+            divDom.ondragleave = function (event) {
+              this.classList.remove("active");
+            };
+          });
+      }
+
+      function dropHandler(event) {
+        step++;
+
+        // console.log(event.dataTransfer.getData("text"));
+        var t = event.dataTransfer.getData("text");
+        if (t === event.target.dataset.xxx) {
+          console.log("匹配");
+
+          //
+          var tDom = document.querySelector("i[data-xxx=" + t + "]");
+          console.log(tDom);
+          tDom.classList.add("draged");
+          event.target.appendChild(tDom.cloneNode(true));
+
+          correct++;
+          if (correct >= 5) {
+            //   showRePlay()
+            document.querySelector(".replay").style.display = "block";
+          }
+        } else {
+          console.log("不匹配");
+        }
+
+        console.log("step", step, "correct", correct);
+        document.querySelector(".s").innerText = step;
+        document.querySelector(".c").innerText = correct;
+
+        event.target.classList.remove("active");
+      }
+
+      function shuffler(arr) {
+        return arr.sort(function () {
+          return Math.random() - 0.5;
+        });
+      }
+
+      var step;
+      var correct;
+      function play() {
+        preselected.innerHTML = "";
+        stage.innerHTML = "";
+
+        step = 0;
+        correct = 0;
+        document.querySelector(".s").innerText = step;
+        document.querySelector(".c").innerText = correct;
+        document.querySelector(".replay").style.display = "none";
+        var currentBrands = shuffler(brands).slice(0, 8);
+        createPreSelected(currentBrands);
+        createStage(currentBrands);
+      }
+
+      play();
+
+      document.querySelector(".replay").onclick = function () {
+        play();
+      };
+    </script>
+  </body>
+</html>

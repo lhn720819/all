@@ -1,0 +1,18 @@
+body {
+  background-color: red; }
+  body p {
+    color: blue; }
+    body p:hover {
+      color: green; }
+    body p > a {
+      color: red;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ccc; }
+
+/* ssssssssss */
+.test {
+  color: red;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }

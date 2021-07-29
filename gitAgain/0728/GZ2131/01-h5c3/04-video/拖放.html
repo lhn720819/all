@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <img id="xxx" draggable="true" src="https://www.runoob.com/images/compatible_chrome.gif" alt="" />
+
+    <script>
+      // drag  drop
+      var img = document.querySelector("img");
+
+      document.querySelectorAll(".box").forEach(function (item) {
+        item.ondragover = function (event) {
+          event.preventDefault();
+        };
+        item.ondrop = function (event) {
+          console.log("ondrop", event);
+          //   console.log("ondrop", event.dataTransfer.getData("text"));
+          var id = event.dataTransfer.getData("text");
+
+          this.appendChild(document.querySelector("#" + id));
+        };
+      });
+
+      img.ondragstart = function (event) {
+        // console.log(event.target);
+        event.dataTransfer.setData("text", event.target.id);
+      };
+
+      //   ondragstart setData => ondrop getData
+      // ondragover 拖动经过阻止默认事件 就允许放置
+    </script>
+
+    <ul>
+      <li>11</li>
+      <li>22</li>
+      <li>33</li>
+      <li>44</li>
+    </ul>
+    <div class="select"></div>
+    <style>
+      ul li {
+        list-style: none;
+        background-color: red;
+        width: 50px;
+        display: inline-block;
+        text-align: center;
+      }
+      .select {
+        width: 200px;
+        height: 200px;
+        border: 1px solid orange;
+      }
+    </style>
+
+    <!-- https://www.17sucai.com/preview/776298/2019-08-16/tfyx/index.html -->
+  </body>
+</html>

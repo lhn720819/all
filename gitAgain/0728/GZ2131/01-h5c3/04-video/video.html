@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <video controls="controls">
+      <source src="https://www.runoob.com/try/demo_source/movie.mp4" type="video/mp4" />
+    </video> -->
+
+    <!-- <video src="https://www.runoob.com/try/demo_source/movie.mp4" controls autoplay muted></video> -->
+    <!-- chrome 自动播放 需要静音 -->
+
+    <!-- <video
+      width="300"
+      height="300"
+      loop="loop"
+      src="https://www.runoob.com/try/demo_source/movie.mp4"
+      controls
+      autoplay
+      preload="none"
+      poster="https://www.runoob.com/images/compatible_chrome.gif"
+    ></video> -->
+
+    <!-- preload  auto 加载视频
+metadata 视频元信息 媒体时长 尺寸 码流 编码
+none -->
+
+    <video width="300" height="300" controls src="https://www.runoob.com/try/demo_source/movie.mp4">
+      <track default kind="captions" srclang="英文" src="./track_en.vtt" />
+      <track default kind="captions" srclang="中文" src="./track_zh.vtt" />
+      <track default kind="captions" srclang="双语" src="./track_en_zh.vtt" />
+    </video>
+    <button class="play">播放</button>
+
+    <input type="range" min="0" max="100" step="0.1" value="0" />
+    <script>
+      var video = document.querySelector("video");
+      // video.play()
+      // video.pause()
+
+      document.querySelector(".play").onclick = function () {
+        video.play();
+      };
+
+      console.log(video.autoplay);
+      //   video.autoplay = true;
+      console.log(video.controls);
+      video.controls = false;
+
+      console.log(video.buffered);
+      // 已经缓冲片段 个数
+      console.log(video.buffered.start[0]);
+      console.log(video.buffered.end[0]);
+
+      //
+      //   video.defaultPlaybackRate = 5;
+
+      video.playbackRate = 1;
+      console.log(video.defaultPlaybackRate);
+
+      console.log(video.duration);
+
+      // 事件
+      video.onloadedmetadata = function () {
+        console.log(video.duration);
+        document.querySelector("input").max = video.duration;
+      };
+
+      video.oncanplay = function () {
+        console.log(video.buffered);
+        // 已经缓冲片段 个数
+        console.log(video.buffered.start(0));
+        console.log(video.buffered.end(0));
+
+        console.log(video.currentSrc);
+      };
+
+      video.ontimeupdate = function () {
+        console.log(video.currentTime);
+        document.querySelector("input").value = video.currentTime;
+      };
+
+      video.onended = function () {
+        console.log("播放完成");
+      };
+
+      document.querySelector("input").oninput = function (event) {
+        console.log(this.value);
+        video.currentTime = this.value;
+      };
+    </script>
+
+    <audio controls src="https://www.runoob.com/try/demo_source/horse.mp3"></audio>
+
+    <!-- 播放器 -->
+    <!-- https://www.17sucai.com/preview/1117545/2018-03-22/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/index.html -->
+    <!-- https://www.17sucai.com/preview/357914/2018-01-10/html5-circle-music-player/index.html -->
+    <!-- https://www.17sucai.com/preview/1160620/2018-10-08/music/index.html -->
+    <!-- https://www.17sucai.com/preview/166243/2014-09-18/pd-f6d3de0c-3ceb-11e4-8fab-00163e001348/index.html -->
+
+    <!-- 音频可视化 -->
+    <!-- https://www.17sucai.com/preview/520327/2016-04-16/%E5%8F%AF%E8%A7%86%E9%9F%B3%E8%B0%B1/demo.html -->
+  </body>
+</html>

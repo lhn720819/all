@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>btn</button>
+    <script>
+      document.querySelector("button").onclick = function () {
+        //   申请权限
+        var promise = Notification.requestPermission();
+        promise.then(function () {
+          // 确认申请到权限之后
+          var title = "hello world";
+          var options = {
+            body: "hahahha",
+            icon: "https://www.runoob.com/images/compatible_chrome.gif",
+            image: "https://pic.ecook.cn/web/259106340.jpg!wd320",
+          };
+          //   显示通知
+          var notification = new Notification(title, options);
+        });
+      };
+    </script>
+  </body>
+</html>

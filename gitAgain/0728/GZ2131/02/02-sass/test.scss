@@ -1,0 +1,31 @@
+$color: red;
+body {
+  background-color: $color;
+  p {
+    color: blue;
+    &:hover {
+      color: green;
+    }
+    > a {
+      color: red;
+      border: {
+        style: solid;
+        width: 1px;
+        color: #ccc;
+      }
+    }
+  }
+}
+
+/* ssssssssss */
+
+@mixin rounded-corners($px: 5px) {
+  -moz-border-radius: $px;
+  -webkit-border-radius: $px;
+  border-radius: $px;
+}
+.test {
+  color: red;
+  @include rounded-corners();
+  // @include rounded-corners(10px);
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #canvas {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="https://www.runoob.com/wp-content/uploads/2013/11/img_the_scream.jpg" alt="" />
+    <canvas id="canvas" width="300" height="300"></canvas>
+
+    <script>
+      var canvas = document.querySelector("#canvas");
+      //   获取绘制环境
+      var context = canvas.getContext("2d");
+
+      //   context.arc(100, 100, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 360);
+
+      //   context.rect(50, 50, 200, 100);
+
+      //   context.fillStyle = "rgb(255,0,0)";
+      //   var lg = context.createLinearGradient(0, 0, 100, 0);
+      //   var lg = context.createLinearGradient(50, 0, 250, 0);
+      //   lg.addColorStop(0, "red");
+      //   lg.addColorStop(0.8, "red");
+      //   lg.addColorStop(0.8, "green");
+      //   lg.addColorStop(1, "blue");
+      //   context.fillStyle = lg;
+
+      //   var lg = context.createLinearGradient(50, 50, 250, 150);
+      //   var lg = context.createLinearGradient(0, 50, 0, 150);
+      var lg;
+      var d = 1;
+      var x = 50;
+      //   setInterval(() => {
+      //     context.clearRect(0, 0, 300, 300);
+      //     if (d) {
+      //       x++;
+      //       if (x >= 250) d = 0;
+      //     } else {
+      //       x--;
+      //       if (x <= 50) d = 1;
+      //     }
+
+      //     lg = context.createLinearGradient(300 - x, 50, x, 150);
+
+      //     lg.addColorStop(0, "red");
+      //     lg.addColorStop(1, "blue");
+      //     context.fillStyle = lg;
+
+      //     //   context.fill();
+
+      //     context.lineWidth = 10;
+
+      //     context.strokeStyle = lg;
+
+      //     context.stroke();
+      //   }, 30);
+      // 文字
+      //   context.font = "30px '宋体'";
+      context.font = "30px '微软雅黑'";
+      //   context.fillText('你好', 0, 100);
+
+      context.strokeStyle = "red";
+
+      context.strokeText("你好", 0, 100);
+
+      var img = document.querySelector("img");
+      img.onload = function () {
+        // context.drawImage(img, 0, 0);
+        context.arc(50, 50, 20, (Math.PI / 180) * 0, (Math.PI / 180) * 360);
+        context.strokeStyle = "red";
+        // context.beginPath();
+        context.moveTo(0, 200);
+        context.quadraticCurveTo(50, 100, 100, 200);
+        context.stroke();
+
+        context.clip();
+
+        // context.drawImage(img, 0, 0, 110, 136);
+        context.drawImage(img, 0, 0);
+
+        context.stroke();
+      };
+    </script>
+
+    <!-- 折线图 曲线图 饼状图 环状图 柱状图 -->
+
+    <!-- https://echarts.apache.org/ -->
+  </body>
+</html>

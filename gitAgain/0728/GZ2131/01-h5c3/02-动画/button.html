@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="wobble-bottom">Wobble Bottom</button>
+    <button class="bounce-to-right">Bounce To Right</button>
+
+    <style>
+      button {
+        line-height: 4;
+        outline: none;
+        border: none;
+        background-color: lightgray;
+        padding: 0 20px;
+        margin: 20px;
+        transform-origin: top;
+        /* transform: skewX(30deg); */
+      }
+      @keyframes myskew {
+        0% {
+          transform: skewX(0deg);
+        }
+        10% {
+          transform: skewX(15deg);
+        }
+        30% {
+          transform: skewX(-12deg);
+        }
+        50% {
+          transform: skewX(10deg);
+        }
+        70% {
+          transform: skewX(-7deg);
+        }
+        90% {
+          transform: skewX(3deg);
+        }
+        100% {
+          transform: skewX(0deg);
+        }
+      }
+      button.wobble-bottom:hover {
+        animation: myskew 0.8s linear;
+      }
+
+      button.bounce-to-right {
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+      }
+      button.bounce-to-right::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: lightsalmon;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: scaleX(0);
+        transform-origin: left;
+
+        /* transition: all 1s cubic-bezier(0.47, 1.74, 0.53, 0.58); */
+      }
+      @keyframes mybounce {
+        0% {
+          transform: scaleX(0);
+        }
+        50% {
+          transform: scaleX(1);
+        }
+        65% {
+          transform: scaleX(0.8);
+        }
+        80% {
+          transform: scaleX(1);
+        }
+        90% {
+          transform: scaleX(0.9);
+        }
+        100% {
+          transform: scaleX(1);
+        }
+      }
+      @keyframes mybounce-r {
+        0% {
+          transform: scaleX(1);
+        }
+        100% {
+          transform: scaleX(0);
+        }
+      }
+      button.bounce-to-right:hover::before {
+        /* transform: scaleX(1); */
+        animation: mybounce 1s forwards;
+      }
+      button.bounce-to-right::before {
+        animation: mybounce-r 1s backwards;
+      }
+    </style>
+  </body>
+</html>
