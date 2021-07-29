@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box">box</div>
+    <style>
+      .box {
+        width: 250px;
+        height: 300px;
+        background-color: lightblue;
+
+        /* border: 20px solid red; */
+
+        /* border-width: 1px; */
+        border-width: 100px;
+        border-style: solid;
+        border-image: url("./border-copy.png");
+        border-image-slice: 27;
+        /* 按照原始图片裁剪 */
+        /* border-image-width: 3; */
+        /* 边框图片占 border-width 边框宽度的倍数 向内收 */
+        /* border-image-width: 10%; */
+        /* 单个 边框占 整个盒子的百分比 不大于50% */
+
+        /* border-image-outset: 2; */
+        /* 向外拓展 */
+
+        /* border-image-repeat: stretch|repeat|round|initial|inherit; */
+
+        /* border-image-repeat: stretch; */
+        /* border-image-repeat: repeat; */
+        /* border-image-repeat: round; */
+      }
+    </style>
+
+    <div class="test">test</div>
+    <style>
+      .test {
+        width: 500px;
+        height: 300px;
+        /* background-color: lightblue; */
+        /* background-image: linear-gradient(to right, red, green); */
+        /* background-image: linear-gradient(to right, red 80% , green); */
+        /* background-image: linear-gradient(to right, red 10%, green 10%, green 20%); */
+        /* background-image: repeating-linear-gradient(to right, red 0%, red 10%, green 10%, green 20%); */
+        /* background-image: repeating-linear-gradient(to right, red, green); */
+
+        /* background-image: repeating-linear-gradient(
+            to right,
+            rgba(255, 0, 0, 0.5) 0%,
+            rgba(255, 0, 0, 0.5) 5%,
+            rgba(0, 128, 0, 0.5) 5%,
+            rgba(0, 128, 0, 0.5) 10%
+          ),
+          repeating-linear-gradient(
+            30deg,
+            rgba(255, 0, 0, 0.5) 0%,
+            rgba(255, 0, 0, 0.5) 5%,
+            rgba(0, 128, 0, 0.5) 5%,
+            rgba(0, 128, 0, 0.5) 10%
+          ); */
+
+        /* background-image: radial-gradient(red, green); */
+        /* background-image: radial-gradient(circle, red, green); */
+        /* background-image: radial-gradient(circle, red 0%, red 5%, green 5%, green 10%); */
+        /* background-image: repeating-radial-gradient(circle, red 0%, red 5%, green 5%, green 10%); */
+
+        background-image: radial-gradient(circle at top, red, green);
+
+        border: 50px solid red;
+        border-image-source: url("./zhongguowen_看图王.jpg");
+        border-image-slice: 64;
+      }
+    </style>
+  </body>
+</html>

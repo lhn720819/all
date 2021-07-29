@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <script src="../bootstrap/js/jquery-3.6.0.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        .mynavbar{
+            background: #242424 !important;
+            padding-top: 0;
+            padding-bottom: 0;  
+            height: 70px;       
+        }
+        .mynavbar .navbar-nav{
+            font-size:14px;
+        }
+        .mynavbar .navbar-brand{
+            background: url(images/topbar.png) no-repeat 0 0px;
+            width: 157px;
+            height: 70px;
+        }
+        .mynavbar .navbar-nav .show > .nav-link, .mynavbar .navbar-nav .active > .nav-link, .mynavbar .navbar-nav .nav-link.show, .mynavbar .navbar-nav .nav-link.active {
+            background: #000000;
+            padding: 0;
+            height: 70px;
+            line-height: 70px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color:white;
+        }
+        .mynavbar .navbar-nav .nav-link {
+            height: 70px;
+            line-height: 70px;
+            padding: 0 20px;
+            color:#cccccc;
+            position: relative;
+        }
+        .mynavbar .navbar-nav .nav-link:hover, .mynavbar .navbar-nav .nav-link:focus {
+            color: white;
+            background: #000;
+        }
+        .mynavbar  .navbar-nav .nav-link .arrowUpIcon{
+            background: url(images/topbar.png) no-repeat -226px 0;
+            width: 12px;
+            height: 6px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -6px;
+        }
+        .mynavbar  .navbar-nav .nav-link .hotIcon{
+            background: url(images/topbar.png) no-repeat -192px 0;
+            width: 26px;
+            height: 13px;
+            position: absolute;
+            right: -20px;
+            top: 20px;
+        }
+
+        .mynavbar .form-inline {
+            position: relative;
+        }
+        .mynavbar .form-inline .form-control{
+            padding: 11px 0px;
+            border-radius: 50px;
+            font-size:12px;
+            text-indent: 30px;
+            width: 158px;
+        }
+        .mynavbar .form-inline span{
+            background: url(images/topbar.png) no-repeat -10px -108px;
+            width: 13px;
+            height: 14px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+        .mynavbar .form-inline .btn{
+            border: 1px solid #4f4f4f;
+            color: #ccc;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        .mynavbar .form-inline .btn:hover{
+            color:white;
+            border-color:#ccc;
+        }
+        
+        .mynavbar .login{
+            color:#787878;
+            margin-left: 20px;
+            font-size:12px;
+        }
+
+        .mynavbar .navbar-collapse {
+            background: #242424;
+        }
+        .mynavbar .navbar-toggler {
+            color: rgba(0, 0, 0, 0.5);
+            border-color: rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        .mynavbar .navbar-toggler:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mynavbar">
+        <div class="container">
+
+            <!-- logo层 -->
+            <a class="navbar-brand" href="#"></a>
+
+            <!-- 汉堡图标 -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- 导航栏内容 -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">发现音乐 
+                            <span class="sr-only">(current)</span>
+                            <!-- 上箭头 -->
+                            <span class="arrowUpIcon d-none d-xl-block"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">我的音乐</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">朋友</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">商城</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">音乐人</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            下载客户端
+                            <!-- 上箭头 -->
+                            <span class="hotIcon d-none d-xl-block"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- 搜索框和搜索按钮 -->
+                <form class="form-inline my-2 my-lg-0 d-none d-xl-block">
+                    <!-- 放大镜图标 -->
+                    <span class="fdj"></span>
+                    <input class="form-control mr-sm-2" type="text" placeholder="音乐/视频/电台/用户" aria-label="Search">
+                    <button class="btn my-2 my-sm-0" type="submit">创作者中心</button>
+                </form>
+                
+                <a href="#" class="login">登录</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+</body>
+
+</html>

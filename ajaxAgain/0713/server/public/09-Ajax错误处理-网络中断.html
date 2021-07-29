@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">发送get04请求</button>
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "http://localhost:3000/get04");
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200 ){// 当ajax的状态码为4的时候,并且http的状态码为200的时候, 我们才获取响应内容
+                    console.log( xhr.responseText );
+                }
+            }
+
+            // 当网络断开以后,我们是无法发送ajax请求的
+            // 当网络断开以后,会触发xhr.onerror事件
+            xhr.onerror = function(){
+                console.log("哎呀,网络断开了");
+            }
+        }
+
+
+    </script>
+</body>
+</html>

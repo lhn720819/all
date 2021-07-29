@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">发送get04请求</button>
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "http://localhost:3000/get04");
+
+            // xhr.open("get1223123", "http://localhost:3000/get04");
+
+            // xhr.open("get", "http://localhost:3000/get04123123");
+
+            xhr.send();
+
+            /* xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 ){// 当ajax的状态码为4的时候,我们才获取响应内容
+                    // console.log(  xhr.responseText  );
+
+                    // 通过xhr.status属性获取http的状态码
+                    // 常见的http状态码
+                    // 200 请求成功
+                    // 404 请求的资源（网页等）不存在
+                    // 500 内部服务器错误
+                    // 400 客户端请求的语法错误，服务器无法理解
+                    console.log( "当前状态码为:" , xhr.status );
+                }
+            } */
+
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200 ){// 当ajax的状态码为4的时候,并且http的状态码为200的时候, 我们才获取响应内容
+                    console.log( xhr.responseText );
+                }
+            }
+        }
+    </script>
+</body>
+</html>

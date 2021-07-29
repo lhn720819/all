@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>开始舔狗</button>
+    <p></p>
+
+    <!-- 引入我们自己封装的ajax.js文件 -->
+    <script src="js/ajax.js"></script>
+    <script>
+        var btn = document.querySelector("button");
+        var oP = document.querySelector("p");
+
+        btn.onclick = function(){
+            ajax({
+                url:"https://v2.alapi.cn/api/dog",
+                data:{
+                    "token":"lJLxHK2NrnPVri457AaK"
+                },
+                success:function( res ){
+                    oP.innerHTML = res.data.content;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

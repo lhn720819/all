@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        .container{
+            border:1px solid gray;
+        }
+        
+        .container .row div[class*="col"]{
+            border:1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- .container布局容器 左右有15px内填充 -->
+    <!-- 使用.row就可以去掉布局容器 左右15px内填充 -->
+
+    <!-- 栅格系统默认最多12列 -->
+
+    <!-- 栅格系统遵循移动端优先  比较大的屏幕没设置对应的样式,那么就会使用比较小的屏幕设置的对应样式 -->
+
+    <!-- 栅格系统中有5个栅格等级，具体如下表： -->
+
+    <!-- 屏幕名称         尺寸大小               类前缀 -->
+    <!-- 超小屏幕        < 576px                 .col- -->
+    <!-- 小屏幕          >=576px  < 768px        .col-sm- -->
+    <!-- 中屏幕          >=768px  < 992px        .col-md- -->
+    <!-- 大屏幕          >=992px  < 1200px       .col-lg- -->
+    <!-- 超大屏幕        >=1200px                .col-xl- -->
+
+    <div class="container">
+        <!-- 写法一:  .col 均分列 总列数允许超过12列,但是不建议超过12列-->
+        <div class="row">
+            <div class="col">1</div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+            <div class="col">5</div>
+        </div>
+
+        <br/>
+        <br/>
+
+        <!-- 写法二:  类前缀  .col  .col-sm  .col-md .col-md  .col-lg .col-xl 表示在指定的屏幕下均分列-->
+        <div class="row">
+            <div class="col-md">1</div>
+            <div class="col-md">2</div>
+            <div class="col-md">3</div>
+            <div class="col-md">4</div>
+            <div class="col-md">5</div>
+        </div>
+
+
+        <br/>
+        <br/>
+
+        <!-- 写法三:  类前缀-数字  .col-n  .col-sm-n  .col-md-n .col-md-n  .col-lg-n .col-xl-n -->
+        <!-- n的取值1~12 -->
+        <!-- 表示在指定屏幕下,当前列占了多少份 -->
+        <!-- 多个屏幕 -->
+        <div class="row">
+            <div class="col-md-4 col-lg-3 col-xl-2">1</div>
+            <div class="col-md-4 col-lg-3 col-xl-2">2</div>
+            <div class="col-md-4 col-lg-3 col-xl-2">3</div>
+            <div class="col-md-4 col-lg-3 col-xl-2">4</div>
+            <div class="col-md-4 col-lg-3 col-xl-2">5</div>
+            <div class="col-md-4 col-lg-3 col-xl-2">6</div>
+            <div class="col-md-4 col-lg-3 col-xl-2">7</div>
+            <div class="col-md-4 col-lg-3 col-xl-2">8</div>
+            <div class="col-md-4 col-lg-3 col-xl-2">9</div>
+        </div>
+        <br/>
+        <br/>
+
+        <!-- 写法四 类前缀-数字 单一屏幕-->
+        <div class="row">
+            <div class="col-2">1</div>
+            <div class="col-2">2</div>
+            <div class="col-2">3</div>
+            <div class="col-2">4</div>
+            <div class="col-2">5</div>
+            <div class="col-2">6</div>
+        </div>
+        <br/>
+        <br/>
+
+
+        <!-- 容器布局可以嵌套，但一般来说，不推荐且很少使用到 -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8">11</div>
+                    <div class="col-md-2">22</div>
+                    <div class="col-md-2">33</div>
+                </div>
+            </div>
+            <div class="col-md-4">2</div>
+        </div>
+        <br/>
+        <br/>
+
+        <!-- 所占的栅格位正好是 12 列，超过 12 列则会换行，小于 12 列则不能 100%； -->
+        <div class="row">
+            <div class="col-md-5">1</div>
+            <div class="col-md-5">2</div>
+            <div class="col-md-2">3</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-5">1</div>
+            <div class="col-md-5">2</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-5">1</div>
+            <div class="col-md-5">2</div>
+            <div class="col-md-5">3</div>
+        </div>
+        <br/>
+        <br/>
+        
+        <!-- 可以使用类  .w-100  意思就是设置当前元素的宽度为100% 可以进行切割栅格栏位，实现分行操作 -->
+        <div class="row">
+            <div class="col-md-5">1</div>
+            <div class="col-md-2">2</div>
+            <div class="w-100"></div>
+            <div class="col-md-3">3</div>
+        </div>
+    </div>
+</body>
+</html>

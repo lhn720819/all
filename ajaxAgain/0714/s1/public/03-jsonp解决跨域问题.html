@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jsonp的实现步骤 -->
+    <!-- 第一步 使用script标签src设置为你要请求的跨域地址 -->
+    <!-- 第二步 服务器返回的"字符串"内容,会在"客户端"当做"js代码"直接执行 -->
+    <!-- 第三步 在客户端定义函数 -->
+
+    <script>
+        function fn( data ){
+            console.log( data );
+        }
+    </script>
+    
+    <script src="http://localhost:3002/get02"></script>
+</head>
+<body>
+    <!-- jsonp不是ajax请求,但是它模拟ajax的get请求 -->
+    <!-- jsonp json with padding 是 json 的一种"使用模式"，可以让网页从别的域名（网站）那获取资料，即跨域读取数据。 -->
+    <!-- jsonp的原理是使用script标签的src属性引入请求的地址 -->
+    <!-- script引入其他网站资源的时候,是不受同源策略限制的,包括img图片标签引入网上图片路径也是这样 -->
+</body>
+</html>

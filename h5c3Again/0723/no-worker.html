@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas style="border: 1px solid red" id="canvas" width="300" height="300"></canvas>
+
+    <button onclick="clickHandler()">btn</button>
+    <script>
+      var canvas = document.querySelector("#canvas");
+      var context = canvas.getContext("2d");
+
+      //   context.fillRect(0, 100, 10, 10);
+
+      var x = 0;
+      var d = 1;
+      setInterval(() => {
+        context.clearRect(0, 0, 300, 300);
+
+        if (d) {
+          if (x <= 290) {
+            x++;
+          } else {
+            d = 0;
+          }
+        } else {
+          if (x > 0) {
+            x--;
+          } else {
+            d = 1;
+          }
+        }
+
+        context.fillRect(x, 100, 10, 10);
+      }, 1000 / 60);
+
+      function fibonacci(n) {
+        if (n == 1 || n == 2) {
+          return 1;
+        }
+        return fibonacci(n - 2) + fibonacci(n - 1);
+      }
+
+      function clickHandler() {
+        console.log("start", Date.now());
+        console.log(fibonacci(42));
+        console.log("end", Date.now());
+      }
+    </script>
+  </body>
+</html>

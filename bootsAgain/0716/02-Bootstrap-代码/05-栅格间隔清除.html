@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        .container{
+            border:1px solid blue;
+        }
+        .container .row {
+            height: 80px;
+            border:2px solid orange;
+        }
+        .container .row div[class*="col"]{
+            border:1px solid gray;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        栅格间隔清除
+        BootStrap默认的栅格和列间有间隙沟槽，一般是左右-15px的margin或padding处理，您可以使用.no-gutters类来消除它，这将影响到.row行、列平行间隙及所有子列。
+     -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row no-gutters">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+
+    <script>
+      var canvas = document.querySelector("#canvas");
+      //   获取绘制环境
+      var context = canvas.getContext("2d");
+
+      var arr = [150, 230, 224, 218, 135, 147, 260, 500, 484, 123];
+
+      function xxx(arr) {
+        var max = Math.max.apply(null, arr);
+        var min = Math.min.apply(null, arr);
+        var level = 260 / (max + min);
+
+        function drawX() {
+          context.moveTo(20, 280);
+          context.lineTo(280, 280);
+          context.stroke();
+        }
+
+        function drawY() {
+          context.moveTo(20, 280);
+          context.lineTo(20, 20);
+          context.stroke();
+        }
+        drawX();
+        drawY();
+
+        var size = 260 / (arr.length - 1);
+
+        arr.forEach(function (item, index) {
+          context.beginPath();
+          context.arc(size * index + 20, 280 - item * level, 3, 0, Math.PI * 2);
+          context.stroke();
+          context.closePath();
+        });
+
+        context.beginPath();
+
+        arr.forEach(function (item, index) {
+          // debugger;
+          context.lineTo(size * index + 20, 280 - item * level);
+          context.strokeStyle = "red";
+          context.lineWidth = 0.1;
+        });
+        
+        context.stroke();
+      }
+
+      xxx(arr.reverse());
+      // xxx([22, 31, 54]);
+    </script>
+  </body>
+</html>

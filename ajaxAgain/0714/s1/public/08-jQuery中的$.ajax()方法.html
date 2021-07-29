@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>$.ajax()发送get请求不带参数</button>
+    <button>$.ajax()发送get请求带传统表单参数</button>
+    <br/>
+    <br/>
+
+    <button>$.ajax()发送post请求不带参数</button>
+    <button>$.ajax()发送post请求带传统表单参数</button>
+    <button>$.ajax()发送post请求带json字符串参数</button>
+    <br/>
+    <br/>
+
+    <button>$.ajax()发送jsonp请求</button>
+    <br/>
+    <br/>
+
+    <button>演示beforeSend()</button><span></span>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jQuery中常用的ajax有三个
+        // $.ajax( 配置对象 ) 发送get请求,发送post请求还可以jsonp请求
+
+        /* $.ajax({
+            type:请求方式,get或者post,默认是get
+            
+            url:请求地址,
+            
+            data:请求参数  取值可以是参数字符串也可以是一个对象,
+            
+            contentType:"发送数据到服务器时所使用的内容类型。默认是："application/x-www-form-urlencoded",
+
+            dataType:"jsonp", 指定请求为jsonp请求
+
+            jsonp:"在一个 jsonp 中重写回调函数的字符串",
+
+            jsonpCallback:"在一个 jsonp 中规定回调函数的名称"
+
+            success:function( res ){
+                成功回调函数
+            },
+
+            error:function( xhr ){
+                失败回调函数
+            },
+
+            beforeSend:function(){
+                发送请求前运行的函数, 如果beforeSend函数里面return false, 那么当前请求不会被发送,一般用于验证表单是否合法
+            }
+        }) */
+
+
+        // $.get(请求地址,回调函数) 发送get请求
+        // $.post(请求地址,回调函数) 发送post请求
+
+        $("button").eq(0).click(function(){
+            $.ajax({
+                type:"get",
+                url:"http://localhost:3001/ajaxGet01",
+                success:function( res ){
+                    console.log( res );
+                },
+                error:function( xhr ){
+                    console.log( xhr );
+                }
+            });
+        });
+
+        $("button").eq(1).click(function(){
+            $.ajax({
+                url:"http://localhost:3001/ajaxGet02",
+                /* data:{
+                    username:"zhangsan",
+                    age:23
+                }, */
+
+                data:"username=lisi&age=24",
+
+                success:function( res ){
+                    console.log( res );
+                }
+            });
+        });
+
+        $("button").eq(2).click(function(){
+            $.ajax({
+                type:"post",
+                url:"http://localhost:3001/ajaxPost01",
+                success:function( res ){
+                    console.log( res );
+                }
+            });
+        });
+
+        
+        $("button").eq(3).click(function(){
+            $.ajax({
+                type:"post",
+                url:"http://localhost:3001/ajaxPost02",
+                /* data:{
+                    username:"wangwu",
+                    age:25
+                }, */
+
+                data:"username=sunqi&age=27",
+
+                success:function( res ){
+                    console.log( res );
+                }
+            });
+        });
+
+
+        $("button").eq(4).click(function(){
+            $.ajax({
+                type:"post",
+                url:"http://localhost:3001/ajaxPost02",
+
+                // 发送数据到服务器时所使用的内容类型为json字符串
+                contentType:"application/json",
+
+                data: JSON.stringify( { username:"二狗子",age:28 } ),
+
+                success:function( res ){
+                    console.log( res );
+                }
+            });
+        });
+
+
+        $("button").eq(5).click(function(){
+            $.ajax({
+                type:"get",
+                
+                data:{
+                    username:"铁柱",
+                    age:30
+                },
+
+                // 发送jsonp请求
+                dataType:"jsonp",
+
+                // 在一个 jsonp 中重写回调函数的字符串
+                // jsonp:"abc",
+
+                // 在一个 jsonp 中规定回调函数的名称
+                // jsonpCallback:"abcFun",
+
+                url:"http://localhost:3002/get03",
+
+                success:function( res ){
+                    console.log( res );
+                }
+
+            });
+        });
+
+        $("button").eq(6).click(function(){
+            $.ajax({
+                type:"get",
+                url:"http://localhost:3001/ajaxGet03",
+                success:function( res ){
+                    $("span").html( res );
+                },
+                beforeSend:function(){
+                    $("span").html( "正在获取数据,请稍后..." );
+
+                    // beforeSend()方法中如果return false,那么请求不会被发送出去
+                    // return false;
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  background-color: #1f2029;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  perspective: 1200px;
+  .stage {
+    width: 440px;
+    height: 400px;
+
+    background-color: #2a2b38;
+    background-image: url("https://www.17sucai.com/preview/1097306/2020-11-18/dlcc/images/pat.svg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    position: relative;
+
+    //
+    transform-style: preserve-3d;
+
+    color: white;
+
+    transition: all 0.5s;
+    &.active {
+      transform: rotateY(-180deg);
+    }
+
+    form {
+      box-sizing: border-box;
+      padding: 40px 50px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      h1 {
+        text-align: center;
+      }
+      input {
+        display: block;
+        width: 100%;
+
+        background-color: #1f2029;
+        border: none;
+        outline: none;
+        margin: 15px 0;
+        line-height: 3;
+        border-radius: 5px;
+
+        &[type="submit"] {
+          width: 100px;
+          margin: 0 auto;
+          //
+          background-color: #ffeba7;
+          transition: all 0.3s;
+          &:hover {
+            background-color: #f3d97f;
+          }
+        }
+      }
+
+      .info {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &.login {
+        transform: translateZ(50px);
+      }
+
+      &.register {
+        transform: translateZ(-50px) rotateY(180deg);
+        .info {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+// html,
+// body {
+//   margin: 0;
+//   padding: 0;
+//   background-color: #1f2029;
+// }
+// .box {
+//   background-image: url("https://www.17sucai.com/preview/1097306/2020-11-18/dlcc/images/pat.svg");
+//   background-color: #2a2b38;
+//   background-position: center;
+//   background-size: cover;
+//   position: relative;
+//   width: 442px;
+//   height: 402px;
+//   padding-top: 45px;
+//   margin: 0 auto;
+//   margin-top: 200px;
+//   transform-style: preserve-3d;
+//   transition: all 0.5s;
+//   &.active {
+//     transform: rotateY(-180deg);
+//   }
+//   .login {
+//     h2 {
+//       text-align: center;
+//     }
+//   }
+//   .inputbox {
+//     width: 390px;
+//     height: 110px;
+//     margin: 0 auto;
+//     margin-top: 45px;
+//     .email {
+//       margin-bottom: 10px;
+//     }
+//     input {
+//       width: 385px;
+//       height: 48px;
+//       border: none;
+//       outline: none;
+//       text-indent: 55px;
+//       background-color: #1f2029;
+//       color: #53545c;
+//       font-size: 18px;
+//     }
+//   }
+//   .btn {
+//     width: 93px;
+//     height: 50px;
+//     margin: 0 auto;
+//     margin-top: 25px;
+//     border-radius: 20px;
+//   }
+//   button {
+//     width: 93px;
+//     height: 50px;
+//     border: none;
+//     outline: none;
+//     background-color: #ffeba7;
+//     color: #1f2029;
+//     font-size: 18px;
+//   }
+//   .info {
+//     margin-left: 25px;
+//     margin-top: 10px;
+//     i:hover {
+//       color: red;
+//     }
+//   }
+//   .aaa {
+//   }
+//   .zcbtn {
+//     margin-top: 80px;
+//   }
+//   .bbb {
+//     position: absolute;
+//     top: 0;
+//   }
+// }

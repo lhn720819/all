@@ -1,0 +1,72 @@
+@some: foo;
+@selectors: blue, green, red;
+
+div {
+  margin: if((2 > 1), 0, 3px);
+  color: if((iscolor(@some)), @some, black);
+  width: luma(rgb(100, 200, 30));
+  background-color: hsl(0, 100%, 50%);
+  width: length(@selectors);
+}
+
+// 变量 当成选择器 和属性名 @{xxx}  属性值 @xxx
+each(@selectors, {
+    .sel-@{value} {
+      color: @value;
+    }
+  });
+
+// .subnav.show .wrap a:nth-child(1) {
+//   transition-delay: 0.3s;
+// }
+
+/* 111 each 111 */
+each(range(3), {
+    .sel-@{value} {
+      color: @value;
+    }
+  });
+/* 11111 stone 111111 */
+each(range(9), {
+    .subnav.show .wrap a:nth-child(@{value}) {
+        transition-delay: 0.25+@index * 0.05s;
+    }
+  });
+/* 111  loop 递归  1111 */
+.loop(@counter) when (@counter > 0) {
+  width: (10px * @counter);
+  .loop((@counter - 1));
+}
+.test {
+  .loop(3);
+}
+
+/* 1111 栅格 1111 */
+.columns(@n) when (@n>0) {
+  .columns((@n - 1));
+  .col-@{n} {
+    width: (100% / @n);
+  }
+}
+
+.columns(12);
+
+/* 1111  1111 */
+
+.test {
+  width: 10px;
+  height: $width;
+}
+
+.button {
+  &-ok {
+    background-image: url("ok.png");
+  }
+  &-cancel {
+    background-image: url("cancel.png");
+  }
+
+  &-custom {
+    background-image: url("custom.png");
+  }
+}

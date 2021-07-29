@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <img src="images/1.jpg"/>
+    <br/>
+    <br/>
+    <!-- .img-thumbnail响应式的缩略图 -->
+    <img src="images/2.jpg" class="img-thumbnail"/>
+    <br/>
+    <br/>
+
+    <!-- .img-fluid响应式图片 -->
+    <img src="images/3.jpg" class="img-fluid">
+    <br/>
+    <br/>
+
+    <!-- 通过设置.float-left 和.float-right 来设置图片的左右浮动；  清除浮动使用.clearfix -->
+    <div style="border:2px solid orange;" class="clearfix">
+        <img src="images/4.jpg" width="200" class="float-right"/>
+        <img src="images/5.jpg" width="200" class="float-left"/>
+    </div>
+
+    <ul>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+        <li>赵六</li>
+        <li>孙七</li>
+    </ul>
+
+
+    <!-- 因为图片本身是内联块属性，所以，直接在父层用.text-center 也可以实现居中； -->
+    <div style="border:2px solid blue" class="text-center">
+        <img src="images/1.jpg" width="200">
+    </div>
+
+
+    <!-- 通过.d-block 设置为区块，再通过 margin 左右 auto 方式.mx-auto 实现居中； -->
+    <div style="border:2px solid blue" class="my-3">
+        <img src="images/1.jpg" width="200" class="mx-auto d-block">
+    </div>
+</body>
+</html>

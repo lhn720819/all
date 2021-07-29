@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 300 150 图片 -->
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <!-- <script>
+      var canvas = document.querySelector("#canvas");
+      //   获取绘制环境
+      var context = canvas.getContext("2d");
+
+      //   开始绘制
+      //   fillRect 绘制矩形 12 起始点坐标 34宽高
+      context.fillRect(100, 100, 50, 100);
+
+      //   填充颜色
+      context.fillStyle = "red";
+      context.fillRect(100, 200, 100, 50);
+    </script> -->
+
+    <!-- <script>
+      var canvas = document.querySelector("#canvas");
+      //   获取绘制环境
+      var context = canvas.getContext("2d");
+
+      //   context.fillRect(0, 0, 10, 10);
+
+      for (var i = 0; i < 30; i++) {
+        context.fillRect(i * 10, i * 10, 10, 10);
+      }
+    </script> -->
+
+    <!-- 绘制棋盘格 -->
+
+    <!-- <script>
+      var canvas = document.querySelector("#canvas");
+      //   获取绘制环境
+      var context = canvas.getContext("2d");
+
+      // 弧形 圆心坐标 半径 起始弧度(角度)  结束弧度(角度) 方向  [路径] => 2PI
+      // context.arc(x, y, radius, Math.PI / 180 * startAngle, Math.PI / 180 * endAngle, anticlockwise);
+      context.arc(100, 100, 100, (Math.PI / 180) * 0, (Math.PI / 180) * 360);
+
+      //   描边
+      //   线宽
+      context.lineWidth = 10;
+      //   描边样式
+      context.strokeStyle = "green";
+
+      context.stroke();
+
+      context.fillStyle = "orange";
+
+      // 填充
+      context.fill();
+    </script> -->
+
+    <!-- <script>
+      var canvas = document.querySelector("#canvas");
+      //   获取绘制环境
+      var context = canvas.getContext("2d");
+
+      //   context.beginPath();
+      //   context.moveTo(100, 100);
+      //   context.lineTo(150, 100);
+      //   context.lineTo(150, 150);
+      //   context.lineTo(200, 150);
+      //   context.lineTo(200, 200);
+
+      //   context.lineWidth = 3;
+      //   context.strokeStyle = "red";
+      //   context.stroke();
+
+      //   context.closePath();
+
+      //   context.beginPath();
+      //   context.moveTo(100, 100);
+
+      context.arc(100, 100, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 30);
+      // context.closePath();
+
+      context.lineWidth = 20;
+      context.strokeStyle = "green";
+      context.stroke();
+
+      //   context.fill();
+    </script> -->
+
+    <!-- 画楼梯 -->
+
+    <script>
+      var canvas = document.querySelector("#canvas");
+      //   获取绘制环境
+      var context = canvas.getContext("2d");
+
+      function drawCircle(deg) {
+        context.beginPath();
+        context.arc(100, 100, 50, (Math.PI / 180) * 0, (Math.PI / 180) * deg);
+        context.lineWidth = 30;
+        context.strokeStyle = "green";
+        context.stroke();
+      }
+
+      var deg = 0;
+      setInterval(() => {
+        // 清空画布
+        context.clearRect(0, 0, 300, 300);
+        deg++;
+        console.log(deg);
+        drawCircle(deg);
+      }, 30);
+    </script>
+  </body>
+</html>

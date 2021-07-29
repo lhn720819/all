@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="box">
+        <!-- 标题 -->
+        <h1>天气预报</h1>
+
+        <!-- 搜索层 -->
+        <div class="search_box">
+            <input type="seach" class="search_input" placeholder="请输入城市名称"/>
+            <span class="search_btn">搜索</span>
+        </div>
+
+        <!-- 搜索热词 -->
+        <nav class="hot_words">
+            <span class="title">热门城市:</span>
+            <ul>
+                <li>广州</li>
+                <li>北京</li>
+                <li>上海</li>
+                <li>深圳</li>
+                <li>苏州</li>
+                <li>大连</li>
+                <li>重庆</li>
+            </ul>
+            <span class="changeIcon">换一换
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                </svg>
+            </span>
+        </nav>
+
+        <!-- 内容层 -->
+        <div class="content">
+            <ul>
+                <li>
+                    <img src="images/yu.png" height="40"/>
+                    <p class="title">晴</p>
+                    <p class="desc">最低温 -17°c ~ 最高温 -11°C</p>
+                    <p class="day_week">6日星期三</p>
+                    <p>北风</p>
+                    <p>3级</p>
+                </li>
+                <li>
+                    <img src="images/yu.png" height="40"/>
+                    <p class="title">晴</p>
+                    <p class="desc">最低温 -17°c ~ 最高温 -11°C</p>
+                    <p class="day_week">6日星期三</p>
+                    <p>北风</p>
+                    <p>3级</p>
+                </li>
+                <li>
+                    <img src="images/yu.png" height="40"/>
+                    <p class="title">晴</p>
+                    <p class="desc">最低温 -17°c ~ 最高温 -11°C</p>
+                    <p class="day_week">6日星期三</p>
+                    <p>北风</p>
+                    <p>3级</p>
+                </li>
+                <li>
+                    <img src="images/yu.png" height="40"/>
+                    <p class="title">晴</p>
+                    <p class="desc">最低温 -17°c ~ 最高温 -11°C</p>
+                    <p class="day_week">6日星期三</p>
+                    <p>北风</p>
+                    <p>3级</p>
+                </li>
+                <li>
+                    <img src="images/yu.png" height="40"/>
+                    <p class="title">晴</p>
+                    <p class="desc">最低温 -17°c ~ 最高温 -11°C</p>
+                    <p class="day_week">6日星期三</p>
+                    <p>北风</p>
+                    <p>3级</p>
+                </li>
+                <li>
+                    <img src="images/yu.png" height="40"/>
+                    <p class="title">晴</p>
+                    <p class="desc">最低温 -17°c ~ 最高温 -11°C</p>
+                    <p class="day_week">6日星期三</p>
+                    <p>北风</p>
+                    <p>3级</p>
+                </li>
+                <li>
+                    <img src="images/yu.png" height="40"/>
+                    <p class="title">晴</p>
+                    <p class="desc">最低温 -17°c ~ 最高温 -11°C</p>
+                    <p class="day_week">6日星期三</p>
+                    <p>北风</p>
+                    <p>3级</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 引入jQuery -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // 点击搜索按钮,根据文本框的值查询天气
+        $(".search_btn").on("click",function(){
+            // 获取城市名称
+            var cityNameVal = $(".search_input").val();
+            // 判断值是否为空
+            if( cityNameVal == "" ){
+                alert("请输入城市名称再搜索!");
+                return;
+            }
+            // 发送ajax请求
+            getDataByCityName( cityNameVal );
+        });
+
+        // 定义根据城市名称获取天气数据的函数
+        function getDataByCityName( cityName ){
+            $.get("http://api.tianapi.com/txapi/tianqi/index",{
+                key:"efff0b9755cfa286b464161dd5d20294",
+                city: cityName
+            },function( res ){
+                if( res.code != 200 ){
+                    $(".content").html( "<p align='center' style='height:100px;line-height:100px;font-size:30px;color:red;'>😂获取天气数据发生了错误,错误原因是:"+res.msg + "<p>");
+                    return ;
+                }
+                // 获取目标数据
+                var data = res.newslist;
+                // 根据数据渲染DOM结构
+                renderData( data );
+            })
+        }
+
+        // 定义根据数据渲染DOM结构的函数
+        function renderData( currentData ){
+            var htmlStr = `<ul>`;
+            $.each( currentData , function( index, item ){
+                htmlStr += `
+                <li>
+                    <img src="images/${item.weatherimg}" height="40">
+                    <p class="title">${item.weather}</p>
+                    <p class="desc">最低温 ${item.lowest}°c ~ 最高温 ${item.highest}</p>
+                    <p class="day_week">${item.date}${item.week}</p>
+                    <p>${item.wind}</p>
+                    <p>${item.windspeed}级</p>
+                </li>
+                `;
+            });
+            htmlStr += `</ul>`;
+            $(".content").html( htmlStr );
+        }
+
+        // 设置文本框的值
+        $(".search_input").val("广州");
+        // 默认显示广州城市的天气
+        getDataByCityName( "广州" );
+        
+        // 热门城市点击事件
+        $(".hot_words ul").on("click","li",function(){
+            // 获取城市名称
+            var cityNameVal =  $(this).text();
+            // 设置文本框的值
+            $(".search_input").val( cityNameVal );
+            // 根据城市名称获取天气数据
+            getDataByCityName( cityNameVal );
+        });
+
+        // 定义热门城市数组
+        // 热门城市总列表
+        var arrCityName = [
+            "北京",
+            "上海",
+            "广州",
+            "深圳",
+            "苏州",
+            "大连",
+            "重庆",
+            "杭州",
+            "无锡",
+            "天津",
+            "佛山",
+            "宁波",
+            "南京",
+            "成都",
+            "东莞",
+            "武汉",
+            "青岛",
+            "沈阳",
+            "烟台",
+            "唐山",
+            "济南",
+            "哈尔滨",
+            "石家庄",
+            "郑州",
+            "泉州",
+            "温州",
+            "长沙",
+            "南通",
+            "长春",
+            "潍坊",
+            "绍兴",
+            "福州",
+            "淄博",
+            "大庆",
+            "常州",
+            "台州",
+            "济宁",
+            "东营",
+            "西安",
+            "徐州",
+            "临沂",
+            "威海",
+            "嘉兴",
+            "邯郸",
+            "洛阳",
+            "沧州",
+            "金华",
+            "昆明",
+            "南阳",
+            "保定"
+        ];
+
+        // 点击换一换切换城市
+        $(".changeIcon").on("click",function(){
+            // 随机排序
+            arrCityName.sort(function(){
+                return Math.random()-0.5;
+            });
+            // 随机从数组中取出7个不重复的数组元素
+            var arrCity = arrCityName.slice(0,7);
+            // 遍历目标城市数组arrCity
+            var htmlStr = ``;
+            $.each( arrCity , function( index, item ){
+                htmlStr += `<li>${item}</li>`;
+            });
+            // 设置热门城市标签内容
+            $(".hot_words ul").html( htmlStr );
+            // 设置文本框的值
+            $(".search_input").val( arrCity[0] );
+            // 根据城市名称获取天气数据
+            getDataByCityName( arrCity[0] );
+        })
+    
+        // 给文本绑定键盘弹起事件
+        $(".search_input").keyup(function( e ){
+            if( e.keyCode == 13 ){
+                $(".search_btn").click();
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(43,43,43);
+        }
+        .box{
+            position:absolute;
+            margin-left: 30%;
+            margin-top: 10%;
+            width: 300px;
+            height: 300px;
+        }
+        .f{
+            position: absolute;
+            top: 0px;
+            left: 0;
+            opacity: 0.7;
+            background-color: pink;
+            width: 300px;
+            height: 300px;
+            border-radius: 0px 300px 0px 300px;
+            transform-origin: 300px 300px;
+            transition: all 2s;
+        }
+       
+        .box:hover .f1{
+            transform: rotate(60deg);
+        }
+        .box:hover .f2{
+            transform: rotate(120deg);
+        }
+        .box:hover .f3{
+            transform: rotate(180deg);
+        }
+        .box:hover .f4{
+            transform: rotate(240deg);
+        }
+        .box:hover .f5{
+            transform: rotate(290deg);
+        }
+        .box:hover .f6{
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="f f1"></div>
+        <div class="f f2"></div>
+        <div class="f f3"></div>
+        <div class="f f4"></div>
+        <div class="f f5"></div>
+        <div class="f f6"></div>
+    </div>
+</body>
+</html>

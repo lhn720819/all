@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <!-- 标题类 -->
+    <!-- 使用<h1>~<h6>可以创建不同尺寸的标题文字； -->
+    <h1>标题1</h1>
+    <h2>标题2</h2>
+    <h3>标题3</h3>
+    <h4>标题4</h4>
+    <h5>标题5</h5>
+    <h6>标题6</h6>
+    <hr/>
+    
+    
+    <!-- 如果是使用其它元素标签，比如<p>或<div>，调用 .h1~6 同样实现大标题； -->
+
+    <p class="h1">标题1</p>
+    <p class="h2">标题2</p>
+    <p class="h3">标题3</p>
+    <div class="h4">标题4</div>
+    <div class="h5">标题5</div>
+    <div class="h6">标题6</div>
+    <hr/>
+
+    <!-- 通过.text-muted设置字体颜色，构建大标题的附属小标题 small标签 .small类 -->
+    <h1>我是主标题 <small class="text-muted">我是副标题</small> </h1>
+    <h1>我是主标题 <span class="small text-muted">我是副标题</span> </h1>
+
+    <hr/>
+
+    <!-- 还有一种更大型，更加醒目的标题方式：.display-1~4； -->
+    <p>内容</p>
+    <p class="display-1">内容</p>
+    <p class="display-2">内容</p>
+    <p class="display-3">内容</p>
+    <p class="display-4">内容</p>
+    <p class="display-5">内容</p>
+    <hr/>
+
+    <!-- 想要指定一些段落中重要的内容，可以使用.lead 强调； -->
+    <p> <span class="lead">Ajax</span>是实现无刷新获取数据的一种技术</p>
+
+    <!-- 也可以使用.mark，.small 等方式实现同样元素的效果； -->
+    <p> <span class="mark">Ajax</span>是实现无刷新获取数据的一种技术</p>
+    <p> <mark>Ajax</mark>是实现无刷新获取数据的一种技术</p>
+    <hr/>
+
+    <!-- 使用.title 样式和<abbr>缩略语给文本做提示； -->
+    <p><abbr title="这是一个提示！">提示</abbr></p>
+        
+
+    <div class="container" style="border:3px solid green">
+
+        <!-- 使用 Blockquote 设置来源备注或引用； -->
+        <blockquote class="blockquote">
+            <p>这是一段测试各种文本效果的话，本身没有意义！</p>
+        </blockquote>
+        <br/>
+        <br/>
+        <br/>
+            
+            
+        <!-- 使用.blockquote-footer 设置底部备注来源； -->
+        <blockquote class="blockquote">
+            <p>这是一段测试各种文本效果的话，本身没有意义！</p>
+            <footer class="blockquote-footer">出自 Bootstrap</footer>
+        </blockquote>
+                <br/>
+        <br/>
+        <br/>
+            
+            
+        <!-- 可以对内容进行居中对齐.text-center 或居右对齐.text-right； -->
+        <blockquote class="blockquote">
+            <p>这是一段测试各种文本效果的话，本身没有意义！</p>
+            <footer class="blockquote-footer text-right">出自 Bootstrap</footer>
+        </blockquote>
+
+    </div>
+    <hr/>
+
+    <!-- 列表类 -->
+    <!-- .list-unstyled类,去掉列表项目符号和padding-left -->
+    <ul class="list-unstyled">
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+        <li>赵六</li>
+        <li>孙七</li>
+    </ul>
+    <br/>
+    <br/>
+
+    <!-- 使用.list-inline 和.list-inline-item 结合实现多列并排列表； -->
+    <ul class="list-inline">
+        <li class="list-inline-item">张三</li>
+        <li class="list-inline-item">李四</li>
+        <li class="list-inline-item">王五</li>
+        <li class="list-inline-item">赵六</li>
+        <li class="list-inline-item">孙七</li>
+    </ul>
+</body>
+</html>

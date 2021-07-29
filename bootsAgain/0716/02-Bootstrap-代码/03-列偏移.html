@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        .container{
+            border:1px solid blue;
+        }
+        .container .row {
+            height: 80px;
+            border:2px solid orange;
+        }
+        .container .row div[class*="col"]{
+            border:1px solid gray;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        列偏移
+        使用.offset-n 或.offset-*-n 来设置列的偏移量，1 表示一个栅格列  N取值0~12
+
+        使用.ml-n 或.mr-n 来微调列距离，n取值0~5  使用.ml-auto 和.mr-auto 来左右对齐；
+     -->
+
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2 offset-4">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+
+        <div class="row">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2 offset-xl-4">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2 ml-1 mr-3 mt-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row mb-5">
+            <div class="col-md-2 ml-auto mr-auto mt-auto mb-auto">1</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 mx-auto my-auto">1</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-2 my-3 mx-2">1</div>
+        </div>
+        <br/>
+        <br/>
+    </div>
+</body>
+</html>

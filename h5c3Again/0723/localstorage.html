@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 早些时候,本地存储使用的是 cookie。但是Web 存储需要更加的安全与快速
+      // 安全 csrf攻击 cookie浏览器每次访问都会加到请求头 自动携带
+      // 快速 相对cookie 获取
+
+      typeof Storage;
+      // Storage
+      // localStorage
+      // sessionStorage
+
+      //   localStorage.setItem("name", "nick");
+      // 永久有效 当前域名端口 cookie
+
+      var r = localStorage.getItem("name");
+      console.log(r);
+
+      localStorage.removeItem("name");
+      localStorage.clear();
+
+      // user =  {name: 'nick', age: 17}
+
+      //   localStorage.setItem("user", JSON.stringify({ name: "nick", age: 17 }));
+      //   localStorage.setItem("count", 10);
+
+      console.log(JSON.parse(localStorage.getItem("user")));
+      console.log(localStorage.getItem("count"));
+
+      //   document.cookie = "name=nick";
+      //   document.cookie = "age=17";
+      //   cookie 有path  localStorage 没有path
+      document.cookie = "str=1+2=4";
+      console.log(document.cookie);
+
+      //   区别
+
+      //   cookie 有域名端口  有 path  有 过期时间      请求自动携带csrf + get&post    大概 4kb
+      // localStorage  有域名端口  没有 path  永不过期  请求不会自动携带    大概 4Mb
+      // 4096 长度  url长度限制 大概
+
+      //   sessionStorage 与 localStorage  sessionStorage只在当前打开的这个选项卡
+      //   sessionStorage.setItem("name", "nick");
+
+
+      // 进程是资源分配的最小单位，线程是CPU调度的最小单位
+
+      // js单进程单线程
+    </script>
+  </body>
+</html>

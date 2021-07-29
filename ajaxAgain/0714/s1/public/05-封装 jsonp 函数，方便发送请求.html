@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>向s2服务器get03发送jsonp请求</button>
+    <button>向s2服务器get04发送jsonp请求</button>
+    <button>向s2服务器get04发送jsonp请求</button>
+    <script>
+        // 封装一个jsonp函数,用于发送jsonp请求
+        function jsonp( options ){
+            // 创建script标签
+            var newScript = document.createElement("script"); 
+
+            // 参数字符串
+            var params = "";
+            // 遍历options.data
+            for(var attr in options.data ){
+                params += "&" + attr + "=" + options.data[attr];
+            }
+            // 去掉第一个&符号
+            params = params.substr(1);
+
+            // 定义一个随机函数名
+            var funName = "myjsonp" + Math.random().toString(16).substr(2);
+
+            // 给全局window对象,设置一个fn属性 
+            window[funName] = options.success;
+
+            // 设置script标签的src属性
+            if( params.length == 0){
+                newScript.src = options.url + "?" +  "callback="+funName;
+            }else{
+                newScript.src = options.url + "?" + params+ "&" + "callback="+funName;
+            }
+
+            // 把script标签加到body中
+            document.body.appendChild( newScript );
+            // 当script加载完毕以后,删除script标签
+            newScript.onload = function(){
+                newScript.remove();
+            }
+        }
+
+        var btns = document.querySelectorAll("button");
+        btns[0].onclick = function(){
+            jsonp({
+                url:"http://localhost:3002/get03",
+                data:{
+                    username:"zhangsan",
+                    age:23
+                },
+                success:function( res ){
+                    console.log( res );
+                }
+            });
+        }
+
+        btns[1].onclick = function(){
+            jsonp({
+                url:"http://localhost:3002/get04",
+                success:function( res ){
+                    console.log( 11111 );
+                    console.log( res );
+                }
+            });
+        }
+
+        btns[2].onclick = function(){
+            jsonp({
+                url:"http://localhost:3002/get04",
+                success:function( res ){
+                    console.log( 2222222 );
+                    console.log( res );
+                }
+            });
+        }
+    </script>
+</body>
+</html>

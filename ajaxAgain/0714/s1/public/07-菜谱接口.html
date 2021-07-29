@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>普通ajax的get请求获取菜谱</button>
+    <button>jsonp请求获取菜谱</button>
+    
+    <script src="js/ajax.js"></script>
+    <script>
+        var btns = document.querySelectorAll("button");
+        btns[0].onclick = function(){
+            ajax({
+                type:"get",
+                url:"https://api.binstd.com/recipe/search",
+                data:{
+                    keyword:"白菜",
+                    num:3
+                },
+                success:function( res ){
+                    console.log( res );
+                }
+            })
+        }
+
+        btns[1].onclick = function(){
+            jsonp({
+                url:"https://api.binstd.com/recipe/search",
+                data:{
+                    keyword:"白菜",
+                    num:5,
+                    appkey:"85d5254d9987cf31"
+                },
+                success:function( res ){
+                    console.log( res );
+                }
+            })
+        }
+    </script>
+</body>
+</html>

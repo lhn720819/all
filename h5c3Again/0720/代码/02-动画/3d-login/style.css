@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  background-color: #1f2029;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  perspective: 1200px;
+}
+body .stage {
+  width: 440px;
+  height: 400px;
+  background-color: #2a2b38;
+  background-image: url("https://www.17sucai.com/preview/1097306/2020-11-18/dlcc/images/pat.svg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  position: relative;
+  transform-style: preserve-3d;
+  color: white;
+  transition: all 0.5s;
+}
+body .stage.active {
+  transform: rotateY(-180deg);
+}
+body .stage form {
+  box-sizing: border-box;
+  padding: 40px 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+body .stage form h1 {
+  text-align: center;
+}
+body .stage form input {
+  display: block;
+  width: 100%;
+  background-color: #1f2029;
+  border: none;
+  outline: none;
+  margin: 15px 0;
+  line-height: 3;
+  border-radius: 5px;
+}
+body .stage form input[type="submit"] {
+  width: 100px;
+  margin: 0 auto;
+  background-color: #ffeba7;
+  transition: all 0.3s;
+}
+body .stage form input[type="submit"]:hover {
+  background-color: #f3d97f;
+}
+body .stage form .info {
+  display: flex;
+  justify-content: space-between;
+}
+body .stage form.login {
+  transform: translateZ(50px);
+}
+body .stage form.register {
+  transform: translateZ(-50px) rotateY(180deg);
+}
+body .stage form.register .info {
+  justify-content: center;
+}
+/*  文件 首选项 设置 拓展 easy less  setting.json
+"less.compile": {
+    "autoprefixer": "> 5%, last 2 Chrome versions, not ie 6-9",
+    "sourceMap": true
+} 
+  
+  */
+/*# sourceMappingURL=./style.css.map */

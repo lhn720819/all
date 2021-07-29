@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .box{
+            margin-left: 100px;
+            margin-top: 100px;
+        }
+        .box select{
+            float: left;
+        }
+        .box .content{
+            float: left;
+        }
+        .box .content ul{
+            float: left;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <select>
+            <option>广州</option>
+            <option>深圳</option>
+            <option>北京</option>
+            <option>上海</option>
+            <option>佛山</option>
+            <option>东莞</option>
+            <option>杭州</option>
+            <option>重庆</option>
+        </select>
+
+        <div class="content">
+            
+        </div>
+    </div>
+
+    <script src="js/myajax.js"></script>
+    <script>
+        // 获取下拉框
+        var oSelect = document.querySelector("select");
+
+        // 获取.content
+        var content = document.querySelector(".content");
+
+        // 下拉框改变事件
+        oSelect.onchange = function(){
+            // 表单控件可以使用value获取值
+            // console.log( this.value );
+
+            // 获取被选中的城市名称
+            var cityName = this.value;
+
+            getDateByCity( cityName );
+        }
+
+
+        // 根据城市名称获取天气数据
+        function getDateByCity( currentCity ){
+            // ajax查询天气
+            ajax({
+                type:"get",
+                url:"http://wthrcdn.etouch.cn/weather_mini",
+                data:{
+                    city: currentCity
+                },
+                success:function( res ){
+                    // 获取数据
+                    var data =  res.data;
+
+                    renderData( data );
+                }
+            })
+        }
+
+        // 根据数据渲染HTML结构的函数
+        function renderData( currentData ){
+            // 定义一个字符串
+            var htmlStr = ``;
+
+            // 遍历数据
+            for(var i = 0; i < currentData.forecast.length; i++){
+                var item  = currentData.forecast[i];
+
+                htmlStr += `<ul>
+                    <li>日期:${ new Date().getMonth()+1 + "月" + item.date}</li>
+                    <li>城市:${currentData.city}</li>
+                    <li>风向:${item.fengxiang}</li>
+                    <li>${item.high}</li>
+                    <li>${item.low}</li>
+                    <li>天气:${item.type}</li>
+                </ul>`;
+            }
+
+            content.innerHTML = htmlStr ;
+        }
+    
+        getDateByCity( "广州" );
+    </script>
+</body>
+</html>

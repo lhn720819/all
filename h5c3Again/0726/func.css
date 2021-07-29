@@ -1,0 +1,112 @@
+div {
+  margin: 0;
+  color: black;
+  width: 44.11161568%;
+  background-color: hsl(0, 100%, 50%);
+  width: 3;
+}
+.sel-blue {
+  color: blue;
+}
+.sel-green {
+  color: green;
+}
+.sel-red {
+  color: red;
+}
+/* 111 each 111 */
+.sel-1 {
+  color: 1;
+}
+.sel-2 {
+  color: 2;
+}
+.sel-3 {
+  color: 3;
+}
+/* 11111 stone 111111 */
+.subnav.show .wrap a:nth-child(1) {
+  transition-delay: 0.3s;
+}
+.subnav.show .wrap a:nth-child(2) {
+  transition-delay: 0.35s;
+}
+.subnav.show .wrap a:nth-child(3) {
+  transition-delay: 0.4s;
+}
+.subnav.show .wrap a:nth-child(4) {
+  transition-delay: 0.45s;
+}
+.subnav.show .wrap a:nth-child(5) {
+  transition-delay: 0.5s;
+}
+.subnav.show .wrap a:nth-child(6) {
+  transition-delay: 0.55s;
+}
+.subnav.show .wrap a:nth-child(7) {
+  transition-delay: 0.6s;
+}
+.subnav.show .wrap a:nth-child(8) {
+  transition-delay: 0.65s;
+}
+.subnav.show .wrap a:nth-child(9) {
+  transition-delay: 0.7s;
+}
+/* 111  loop 递归  1111 */
+.test {
+  width: 30px;
+  width: 20px;
+  width: 10px;
+}
+/* 1111 栅格 1111 */
+.col-1 {
+  width: 100%;
+}
+.col-2 {
+  width: 50%;
+}
+.col-3 {
+  width: 33.33333333%;
+}
+.col-4 {
+  width: 25%;
+}
+.col-5 {
+  width: 20%;
+}
+.col-6 {
+  width: 16.66666667%;
+}
+.col-7 {
+  width: 14.28571429%;
+}
+.col-8 {
+  width: 12.5%;
+}
+.col-9 {
+  width: 11.11111111%;
+}
+.col-10 {
+  width: 10%;
+}
+.col-11 {
+  width: 9.09090909%;
+}
+.col-12 {
+  width: 8.33333333%;
+}
+/* 1111  1111 */
+.test {
+  width: 10px;
+  height: 10px;
+}
+.button-ok {
+  background-image: url("ok.png");
+}
+.button-cancel {
+  background-image: url("cancel.png");
+}
+.button-custom {
+  background-image: url("custom.png");
+}
+/*# sourceMappingURL=./func.css.map */

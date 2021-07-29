@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>向本地服务端get03发起get请求,并携带参数</button>
+    <button>向本地服务端post03发起post请求,并携带参数</button>
+
+    <script>
+
+        // 客户端向服务端传递参数的时候,get请求和post请求传递的方式是不同的
+        // get请求是通过请求地址拼接传递参数的  键名1=键值1&键名2=键值2...
+
+        // post请求是通过xhr.send( 参数字符串) 传递的
+
+        var btns = document.querySelectorAll("button");
+        btns[0].onclick = function(){
+            var xhr = new XMLHttpRequest();
+
+            // xhr.open("get","http://localhost:3000/get03?cityName=广州&tody=20210712");
+            
+            // 参数字符串  是1对或者多对键值对组成  键值对使用&符号连接
+            var params = "cityName=广州&tody=20210712";
+            xhr.open("get","http://localhost:3000/get03?"+params);
+
+            xhr.send();
+            xhr.onload = function(){
+                // console.log( xhr.responseText );
+                console.log( JSON.parse( xhr.responseText ) );
+            }
+        }
+
+        btns[1].onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("post","http://localhost:3000/post03");
+
+            // 参数字符串
+            var params = "username=zhangsan&age=23&sex=男";
+
+            // post请求传递参数的时候,还需要在xhr.send()方法调用之前设置请求头
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+            // post请求传递参数是通过xhr.send( 参数字符串 );
+            xhr.send( params );
+
+            xhr.onload = function(){
+                // console.log( xhr.responseText );
+                var res = JSON.parse( xhr.responseText );
+                console.log( res );
+            }
+        }
+
+    </script>
+</body>
+</html>

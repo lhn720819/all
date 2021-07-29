@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>get传递传统表单参数</button>
+    <button>post传递传统表单参数</button>
+    <button>post传递json格式字符串参数</button>
+
+    <script>
+        // 传递请求参数的两种格式
+        // 第一种.   传统网站表单提交 application/x-www-form-urlencoded  get请求和post请求都可以使用
+        // "name=zhangsan&age=20&sex=男"
+
+        // 第二种.   json格式的"字符串"    application/json    post请求才能够传递json格式字符串
+        // "{name: 'zhangsan', age: '20', sex: '男'}"
+
+        var btns = document.querySelectorAll("button");
+        btns[0].onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("get","http://localhost:3000/get01?name=zhangsan&age=20&sex=男");
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200  ){
+                    console.log( JSON.parse( xhr.responseText ) );
+                }
+            }
+        }
+
+        btns[1].onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("post","http://localhost:3000/post01");
+
+            var params = "name=lisi&age=24&sex=女";
+            // 设置请求头
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+            xhr.send( params );
+
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200  ){
+                    console.log( JSON.parse( xhr.responseText ) );
+                }
+            }
+        }
+
+        btns[2].onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("post","http://localhost:3000/post02");
+
+            // json对象
+            var json = {
+                "name":"王五",
+                "age":25,
+                "sex":"男"
+            }
+
+            // 如果想要传递json字符串, 也需要额外设置请求头
+            xhr.setRequestHeader("Content-type","application/json");
+
+            // 传递json字符串
+            xhr.send( JSON.stringify( json ) );
+
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200  ){
+                    console.log( JSON.parse( xhr.responseText ) );
+                }
+            }
+        }
+    </script>
+</body>
+</html>

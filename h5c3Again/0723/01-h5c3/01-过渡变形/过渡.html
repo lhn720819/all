@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+
+        /* transition: 属性 过渡时长 速度曲线 延迟 ; */
+        /* transition: all 3s linear 0s; */
+      }
+
+      /* 伪类 a: active link visit  */
+      /* before after */
+      .box:hover {
+        width: 200px;
+        background-color: blue;
+
+        /*  */
+        transition: all 3s linear 0s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- file:///C:/Users/moon/Desktop/GZ2131/01-h5c3/01-%E8%BF%87%E6%B8%A1%E5%8F%98%E5%BD%A2/%E8%BF%87%E6%B8%A1.html -->
+    <!-- http://127.0.0.1:5500/01-h5c3/01-%E8%BF%87%E6%B8%A1%E5%8F%98%E5%BD%A2/%E8%BF%87%E6%B8%A1.html -->
+    <div class="box">box</div>
+
+    <div class="big">
+      <div class="small">1</div>
+      <div class="small">2</div>
+      <!-- <div class="small">3</div> -->
+    </div>
+    <style>
+      .big {
+        background: lightblue;
+      }
+      .big .small {
+        width: 50px;
+        height: 50px;
+        background: lightcoral;
+        margin: 5px;
+        transition-property: all;
+        transition-duration: 3s;
+      }
+      /* big .small:nth-of-type(1) */
+
+      /* cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值 x方向0-1  y可以超出 */
+      .big .small:nth-child(1) {
+        transition-timing-function: linear;
+      }
+      .big .small:nth-child(2) {
+        /* transition-timing-function: ease; */
+        /* transition-timing-function: linear; */
+        /* transition-timing-function: cubic-bezier(0.3, 0, 0.8, 1); */
+        /* transition-timing-function: cubic-bezier(.23, 0.97, 0.89, 0.22); */
+        transition-timing-function: cubic-bezier(0.22, 1.23, 0.97, 0.89);
+        transition-delay: -1s;
+
+        /* 笔试题 */
+      }
+      .big .small:nth-child(3) {
+        transition-timing-function: ease-in;
+      }
+      .big:hover .small {
+        margin-left: 300px;
+      }
+    </style>
+
+    <div class="test"></div>
+    <style>
+      .test {
+        width: 100px;
+        height: 100px;
+        background: red;
+      }
+      /* .test.active {
+        margin-left: 300px;
+      } */
+    </style>
+    <script>
+      // $('.xxx').animate({maginLeft: 300})
+
+      document.querySelector(".test").onclick = function () {
+        this.classList.toggle("active");
+
+        // console.log(window.getComputedStyle(this).marginLeft);
+
+        var _this = this;
+        var m = 0;
+        setInterval(function () {
+          m++;
+          // console.log(_this);
+          _this.style.marginLeft = m + "px";
+        }, 16);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.clear {
+  clear: both;
+}
+.allbox {
+  width: 1220px;
+  margin: 0 auto;
+}
+.allbox .left {
+  width: 600px;
+  float: left;
+}
+.allbox .left .search {
+  width: 500px;
+  height: 60px;
+  position: relative;
+  border: 3px solid #27ae60;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.allbox .left .search input {
+  width: 400px;
+  height: 52px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  text-indent: 20px;
+  outline: none;
+  border: none;
+  float: left;
+}
+.allbox .left .search button {
+  cursor: pointer;
+  display: inline-block;
+  width: 90px;
+  height: 55px;
+  background-color: #27ae60;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+.allbox .left .search span {
+  display: inline-block;
+  background: url("../img/搜索1.png") no-repeat -9px -9px;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 15px;
+  left: 363px;
+  z-index: 100;
+}
+.allbox .left .leftlist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.allbox .left .leftlist ul li {
+  cursor: pointer;
+  width: 490px;
+  height: 160px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.allbox .left .leftlist ul li .content {
+  width: 490px;
+  height: 160px;
+  border-bottom: 1px solid #ccc;
+}
+.allbox .left .leftlist ul li .content .imglist {
+  width: 150px;
+  height: 150px;
+  float: left;
+}
+.allbox .left .leftlist ul li .content .imglist img {
+  width: 150px;
+  height: 150px;
+}
+.allbox .left .leftlist ul li .content .right {
+  margin-left: 10px;
+  float: left;
+  width: 315px;
+  height: 150px;
+}
+.allbox .left .leftlist ul li .content .right h2 {
+  margin: 0;
+}
+.allbox .left .leftlist ul li .content .right p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+.allbox .right {
+  float: left;
+  width: 330px;
+  margin-left: 50px;
+}
+.allbox .right .rightimg {
+  width: 330px;
+  height: 330px;
+}
+.allbox .right .rightimg img {
+  width: 330px;
+  height: 330px;
+}
+.allbox .right .title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.allbox .right ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.allbox .right ul li {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ccc;
+  height: 40px;
+  line-height: 40px;
+}
+.allbox .right ul:last-child {
+  border-bottom: 1px solid #ccc;
+}
+p {
+  width: 315px;
+  height: 100px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+.procedure p {
+  height: 20px;
+}

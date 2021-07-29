@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>向本地服务器get01发送请求</button>
+    <button>向本地服务器get02发送请求</button>
+
+    <script>
+        // 服务器响应数据的格式常见的有两种
+        // 第一种 字符串内容
+        // 第二种 json对象
+        
+        var btns = document.querySelectorAll("button");
+        btns[0].onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("get","http://localhost:3000/get01");
+            xhr.send();
+            xhr.onload = function(){
+                console.log( xhr.responseText );
+            }
+        }
+
+        btns[1].onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("get","http://localhost:3000/get02");
+            xhr.send();
+            xhr.onload = function(){
+                console.log( xhr.responseText );
+
+                var res = JSON.parse( xhr.responseText );
+                console.log( res );
+            }
+        }
+
+    </script>
+</body>
+</html>

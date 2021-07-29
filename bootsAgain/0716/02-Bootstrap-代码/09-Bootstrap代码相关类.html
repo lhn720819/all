@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <code>var a = 10;</code>
+
+    <hr/>
+
+    <!-- pre是预排版标签,pre里面所有空格,换行,tab缩进都会保留,生效 -->
+    <pre>
+        <code>
+        var x = 10;
+        var y = 20;
+        console.log( x + y );
+        </code>
+    </pre>
+
+    <hr/>
+    <!-- 使用<pre>标签元素，配合<code>实现代码块的效果； -->
+    <!-- 可以在代码区域设置.pre-scrollable 样式，实现固定区域滚动，默认高 340px； -->
+    <pre class="pre-scrollable" style="width:300px;max-height:200px;">
+        <code>
+        var x = 10;
+        var y = 20;
+        console.log( x + y );
+        </code>
+        <code>
+        var x = 10;
+        var y = 20;
+        console.log( x + y );
+        </code>
+        <code>
+        var x = 10;
+        var y = 20;
+        console.log( x + y );
+        </code>
+        <code>
+        var x = 10;
+        var y = 20;
+        console.log( x + y );
+        </code>
+        <code>
+        var x = 10;
+        var y = 20;
+        console.log( x + y );
+        </code>
+    </pre>
+
+    <hr/>
+
+
+    <!-- 使用<var>标签元素标识变量部分； -->
+    <var>y</var> = <var>m</var> + <var>b</var>
+    <br/>
+    <!-- 整体包含原则上是不对的 -->
+    <var>y = m + b</var>
+    
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="300" height="300"></canvas>
+  </body>
+  <script>
+    var canvas = document.querySelector("canvas");
+    var context = canvas.getContext("2d");
+    var size = 30;
+    countX = 300 / size;
+    countY = 300 / size;
+    for (var j = 0; j < countY; j++) {
+      for (var i = 0; i < countY; i++) {
+        if (j % 2) {
+          if (i % 2) {
+            context.fillRect(i * size, j * size, size, size);
+          }
+        } else {
+          if (!(i % 2)) {
+            context.fillRect(i * size, j * size, size, size);
+          }
+        }
+      }
+    }
+  </script>
+</html>

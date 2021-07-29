@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section class="stage">
+      <form class="login">
+        <h1>登录</h1>
+        <input type="email" />
+        <input type="password" />
+        <input type="submit" value="登录" />
+
+        <div class="info">
+          <span>没有帐号？<i>立即注册</i></span>
+          <span>忘记密码？</span>
+        </div>
+      </form>
+      <form class="register">
+        <h1>注册</h1>
+        <input type="text" />
+        <input type="email" />
+        <input type="password" />
+        <input type="submit" value="注册" />
+
+        <div class="info">
+          <span>已有帐号？<i>立即登录</i></span>
+        </div>
+      </form>
+    </section>
+
+    <script>
+      document.querySelectorAll(".stage form .info i").forEach(function (item) {
+        // console.log(item);
+        item.addEventListener("click", function () {
+          // console.log(this);
+          document.querySelector(".stage").classList.toggle("active");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+[
+    {
+        "username":"zhangsan",
+        "age":23,
+        "sex":"男"
+    },
+    {
+        "username":"lisi",
+        "age":24,
+        "sex":"女"
+    },
+    {
+        "username":"wangwu",
+        "age":25,
+        "sex":"女"
+    },
+    {
+        "username":"zhaoliu",
+        "age":26,
+        "sex":"男"
+    },
+    {
+        "username":"sunqi",
+        "age":27,
+        "sex":"男"
+    },
+    {
+        "username":"二狗子",
+        "age":28,
+        "sex":"男"
+    }
+]

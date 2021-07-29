@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style:none;
+        }
+        .pageBox{
+            background: #f5f5f6;
+            padding: 5px;
+            width: 600px;
+            margin:20px auto;
+        }
+        .pageBox ul {
+            overflow: hidden;
+        }
+        .pageBox ul li{
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            float: left;
+            background: #ffffff;
+            margin: 0 5px;
+            border-radius: 10px;
+            color:#7682c4;
+            cursor: pointer;
+        }
+        .pageBox ul li.active{
+            background: #4e6ef2;
+            color:white;
+        }
+        table{
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 分页器 -->
+    <div class="pageBox">
+        <ul>
+            <li class="prevPage">&lt;&lt;</li>
+            <li class="pageLi active">1</li>
+            <li class="pageLi">2</li>
+            <li class="pageLi">3</li>
+            <li class="pageLi">4</li>
+            <li class="pageLi">5</li>
+            <li class="pageLi">6</li>
+            <li class="pageLi">7</li>
+            <li class="pageLi">8</li>
+            <li class="pageLi">9</li>
+            <li class="pageLi">10</li>
+            <li class="nextPage">&gt;&gt;</li>
+        </ul>
+    </div>
+
+    <table border="1" rules="all" width="1000">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>标题</th>
+                <th>内容</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        // 因为这个笑话请求的接口是别人的网址,所以我们不需要启动自己的服务器
+
+        // 获取tbody
+        var tbody = document.querySelector("tbody");
+        
+        // 封装一个根据当前页码获取ajax获取数据的函数
+        function getDataByPageNum( pageNum ){
+            // 1. 创建ajax对象   找一个人
+            var xhr = new XMLHttpRequest();
+            // 2. 初始化ajax对象 偷偷告诉他要干嘛
+            xhr.open("get",`https://v2.alapi.cn/api/joke?token=lJLxHK2NrnPVri457AaK&page=${pageNum}&num=10`);
+            // 3. 发送请求       放心去吧
+            xhr.send();
+            // 4. 处理响应       干的怎样,结果
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200 ){// 判断ajax状态码以及http状态码
+                    var res = JSON.parse( xhr.responseText );
+                    var data = res.data;
+                    // 渲染
+                    renderData( data );
+                }
+            }
+        }
+
+        // 根据数据渲染tbody的标签内容
+        function renderData( currentData ){
+            // 定义一个字符串
+            var htmlStr = ``;
+            // 遍历data数据到表格中
+            for(var i = 0; i < currentData.length; i++ ){
+                var item = currentData[i];
+                htmlStr += `
+                    <tr>
+                        <td width='50'>${i+1}</td>    
+                        <td width='200'>${item.title}</td>    
+                        <td>${item.content}</td>    
+                    </tr>
+                `
+            }
+            // 设置tbody的标签内容
+            tbody.innerHTML = htmlStr;
+        }
+
+        // 默认显示第一页数据
+        getDataByPageNum( 1 );
+
+        // 页码对应li点击事件
+        var pageLis = document.querySelectorAll(".pageBox .pageLi");
+        // 绑定事件
+        for(var i = 0; i < pageLis.length; i++ ){
+            pageLis[i].onclick = function(){
+                // 排他  去掉所有.pageLi的类名
+                for(var j = 0; j < pageLis.length; j++ ){
+                    pageLis[j].classList.remove("active");
+                }
+
+                // 高亮当前项
+                this.classList.add("active");
+
+                // 获取当前页码
+                var currentPageNum =  this.innerText ;
+                // 调用方法,获取笑话数据并渲染
+                getDataByPageNum( currentPageNum );
+            }
+        }
+
+        // 下一页功能
+        // 实现思路:  当前页码+1
+        // 当前页码就是当前具有active类名的li的标签内容
+        var nextPage = document.querySelector(".nextPage");
+        nextPage.onclick = function(){
+            // 获取当前页码
+            var currentPageNum = document.querySelector(".pageBox .pageLi.active").innerText;
+
+            if( currentPageNum == 10 ){// 下一页边界判断
+                return; 
+            }
+
+            // 计算得到下一页页码
+            var nextPageNum = Number(currentPageNum) + 1;
+            // 调用方法,获取笑话数据并渲染
+            getDataByPageNum( nextPageNum );
+
+            // 改变高亮
+            // 排他  去掉所有.pageLi的类名
+            for(var j = 0; j < pageLis.length; j++ ){
+                pageLis[j].classList.remove("active");
+            }
+
+            // 高亮当前项
+            pageLis[currentPageNum].classList.add("active");
+        }
+
+        // 上一页功能
+        var prevPage = document.querySelector(".prevPage");
+        prevPage.onclick = function(){
+            // 获取当前页码
+            var currentPageNum = document.querySelector(".pageBox .pageLi.active").innerText;
+
+            if( currentPageNum == 1 ){// 上一页边界判断
+                return ;
+            }
+
+            // 计算得到上一页页码
+            var prevPageNum = Number(currentPageNum) -1 ;
+            // 调用方法,获取笑话数据并渲染
+            getDataByPageNum( prevPageNum );
+
+            // 改变高亮
+            // 排他  去掉所有.pageLi的类名
+            for(var j = 0; j < pageLis.length; j++ ){
+                pageLis[j].classList.remove("active");
+            }
+
+            // 高亮当前项
+            pageLis[prevPageNum-1].classList.add("active");
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  width: 1200px;
+  height: 410px;
+  margin: 100px auto;
+  border: 5px solid skyblue;
+  border-radius: 10px;
+  padding-top: 10px;
+}
+.box h1 {
+  text-align: center;
+  margin-top: 5px;
+}
+.box .search {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+}
+.box .search .bxsearch {
+  width: 400px;
+  height: 30px;
+  border: 2px solid skyblue;
+  text-indent: 1em;
+}
+.box .search .bxsearch input {
+  outline: none;
+  border: none;
+  height: 30px;
+  width: 304px;
+}
+.box .search .bxsearch button {
+  width: 80px;
+  float: right;
+  border: none;
+  outline: none;
+  height: 30px;
+  cursor: pointer;
+  background-color: skyblue;
+  color: white;
+  font-size: 18px;
+}
+.box .citylist {
+  width: 404px;
+  height: 20px;
+  margin: 20px auto;
+  overflow: hidden;
+  line-height: 20px;
+}
+.box .citylist span {
+  float: left;
+}
+.box .citylist ul {
+  list-style: none;
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  float: left;
+}
+.box .citylist ul li {
+  color: #a594ba;
+  font-size: 15px;
+  float: left;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.box .citylist .change {
+  margin-left: 25px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.box .content {
+  margin-top: 30px;
+}
+.box .content ul {
+  list-style: none;
+  display: flex;
+}
+.box .content ul li {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #f0f0f0;
+  cursor: pointer;
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+.box .content ul li p {
+  line-height: 20px;
+}
+.box .content ul li .weather {
+  margin-top: 10px;
+  color: orange;
+}
+.box .content ul li .temp {
+  color: orange;
+}
+.box .content ul li .date {
+  color: #aaaaaa;
+}
+.box .content ul li:hover {
+  background: #f5faff;
+}
+svg {
+  cursor: pointer;
+}

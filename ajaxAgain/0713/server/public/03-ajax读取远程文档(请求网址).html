@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入城市名称"/>
+    <button>查询天气</button>
+    <p></p>
+
+    <script>
+        // 接口: http://wthrcdn.etouch.cn/weather_mini?city=城市名称
+
+        var btn = document.querySelector("button");
+        var input = document.querySelector("input");
+        var oP = document.querySelector("p");
+
+        btn.onclick = function(){
+            // 获取文本框的内容
+            var cityName = input.value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "http://wthrcdn.etouch.cn/weather_mini?city="+cityName );
+            xhr.send();
+            xhr.onload = function(){
+                // console.log( xhr.responseText );
+                // console.log( typeof xhr.responseText );
+
+                var res = JSON.parse( xhr.responseText );
+                console.log( res );
+                // console.log( typeof res );
+                
+                oP.innerHTML = `明天${res.data.forecast[0].date}, ${res.data.city} ,风向${res.data.forecast[0].fengxiang} ${res.data.forecast[0].high} ${res.data.forecast[0].low} 天气${res.data.forecast[0].type}`;
+            }
+        }
+    </script>
+</body>
+</html>

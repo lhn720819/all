@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        浏览器私有前缀
+        -ms-  ie浏览器  Trident
+        -webkit-  苹果safari & 谷歌 chrome==>blink
+        -moz- 火狐 Gecko
+        -o- 欧朋  blink
+    -->
+
+    <span class="box">box</span>
+    <span>xxxxxxxxxxxxx</span>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        margin: 100px;
+        display: inline-block;
+
+        transition: all 1s;
+      }
+      /* ***重绘&回流****  */
+      .box:hover {
+        /* 旋转 */
+        /* transform: rotate(180deg); */
+
+        /* 平移 x y */
+        /* transform: translate(100px, 50px); */
+        /* margin-left: 200px; */
+
+        /* 缩放 x y */
+        /* transform: scale(1.2, 0.5); */
+
+        /* 扭转 倾斜  x y*/
+        /* transform: skew(30deg); */
+        /* transform: skewY(30deg); */
+
+        /* transform: skew(30deg, 30deg) */
+      }
+    </style>
+  </body>
+</html>

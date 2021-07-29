@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        .container{
+            border:1px solid gray;
+        }
+
+        .container .row div[class*="col"]{
+            border:1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- .d-none  所有屏幕隐藏元素 -->
+    <!-- .d-block  所有屏幕显示元素 -->
+
+    <!-- .d-类前缀-none 隐藏元素 -->
+    <!-- .d-xl-none 超大屏幕的是隐藏元素 -->
+
+    <!-- .d-类前缀-block 显示元素 -->
+    <!-- .d-xl-block 超大屏幕的是显示元素 -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 d-none">第1列</div>
+            <div class="col-md-5 d-xl-none">第2列</div>
+            <div class="col-md-3 d-none d-lg-block d-xl-none">第3列</div>
+            <div class="col-md-2">第4列</div>
+        </div>
+    </div>
+</body>
+</html>

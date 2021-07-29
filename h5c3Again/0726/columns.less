@@ -1,0 +1,67 @@
+.media() {
+  sm: 768px;
+  md: 992px;
+  lg: 1200px;
+}
+
+// col-1
+each(range(12), {
+    .col-@{index} {
+        width: (100%/12 * @index);
+        float: left;
+    }
+})
+
+// col-xs-1 不需要媒体查询
+each(range(12), {
+    .col-xs-@{index} {
+        width: (100%/12 * @index);
+        float: left;
+    }
+})
+
+// 生成带媒体查询
+each(.media(), .(@v, @k, @i) {
+         @media (min-width: @v) {
+            each(range(12), {
+                .col-@{k}-@{index} {
+                    width: (100%/12 * @index);
+                    float: left;
+                }
+            })
+        }
+    });
+
+.row {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  //   [class|=col] {
+  //     float: left;
+  //   }
+}
+
+/* 11111 xxxxxxxx  11111 */
+
+.make-grid(@m) {
+  each(range(12), {
+        .col-@{m}-@{index} {
+            width: (100%/12 * @index);
+            float: left;
+        }
+    });
+}
+
+.make-grid(xs);
+
+@media (min-width: 768px) {
+  .make-grid(sm);
+}
+@media (min-width: 992px) {
+  .make-grid(md);
+}
+@media (min-width: 1200px) {
+  .make-grid(lg);
+}

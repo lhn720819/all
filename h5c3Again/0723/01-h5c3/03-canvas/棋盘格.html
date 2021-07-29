@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+
+    <script>
+      var canvas = document.querySelector("#canvas");
+      //   获取绘制环境
+      var context = canvas.getContext("2d");
+
+      var size = 30;
+      countX = 300 / size;
+      countY = 300 / size;
+
+      // 拆分每行
+      for (var j = 0; j < countY; j++) {
+        // 差分每行内的单元格
+        for (var i = 0; i < countX; i++) {
+          // 偶数行
+          if (j % 2) {
+            // 偶数列画黑色
+            if (i % 2) {
+              context.fillRect(i * size, j * size, size, size);
+            }
+          } else {
+            // 奇数行 奇数列画黑色
+            if (!(i % 2)) {
+              context.fillRect(i * size, j * size, size, size);
+            }
+          }
+        }
+      }
+
+      // https://www.17sucai.com/pins/demo-show?id=9519
+      // https://www.17sucai.com/pins/38814.html
+      // https://www.17sucai.com/pins/demo-show?id=36682
+      // https://www.17sucai.com/pins/demo-show?id=37667
+      // https://www.17sucai.com/pins/demo-show?id=39671
+
+
+      // 验证码 刮刮乐
+    </script>
+  </body>
+</html>

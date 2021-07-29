@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .left {
+        width: 800px;
+        height: 300px;
+        border: 1px solid black;
+        padding: 50px;
+        float: left;
+        margin-right: 130px;
+      }
+      .list {
+        height: 40px;
+        border: 1px solid black;
+        line-height: 40px;
+        display: flex;
+        margin-top: 20px;
+      }
+      .rongqi {
+        width: 85%;
+        height: 40px;
+        margin-left: 20px;
+      }
+      .right {
+        width: 800px;
+        height: 300px;
+        border: 1px solid black;
+        display: flex;
+        padding: 40px;
+        justify-content: space-between;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        display: inline-block;
+        width: 50px;
+        height: 20px;
+        border: 1px solid black;
+        text-align: center;
+        line-height: 20px;
+        margin-top: 10px;
+      }
+      .dele {
+        width: 300px;
+        height: 300px;
+        background-color: gray;
+        margin: 0 auto;
+        margin-top: 30px;
+        text-align: center;
+        line-height: 300px;
+        font-size: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="left">
+        <div class="list">
+          <span>班长:</span>
+          <div class="rongqi"></div>
+          <span class="num">0</span>
+        </div>
+        <div class="list">
+          <span>干部:</span>
+          <div class="rongqi"></div>
+          <span class="num">0</span>
+        </div>
+        <div class="list">
+          <span>队长:</span>
+          <div class="rongqi"></div>
+          <span class="num">0</span>
+        </div>
+        <div class="list">
+          <span>学生:</span>
+          <div class="rongqi"></div>
+          <span class="num">0</span>
+        </div>
+      </div>
+      <div class="right">
+        <ul>
+          <li>张三</li>
+          <li>李四</li>
+          <li>王五</li>
+          <li>赵六</li>
+          <li>阿爸</li>
+          <li>时代</li>
+          <li>现场</li>
+          <li>拷贝</li>
+          <li>放糕</li>
+          <li>地方</li>
+          <li>回家</li>
+          <li>然后</li>
+          <li>天河</li>
+          <li>年份</li>
+          <li>客服</li>
+        </ul>
+      </div>
+      <div class="dele">垃圾</div>
+    </div>
+    <script>
+      var lis = document.querySelectorAll("li");
+      var rqs = document.querySelectorAll(".rongqi");
+      var nums = document.querySelectorAll(".num");
+      var dele = document.querySelector(".dele");
+      // console.log(rqs);
+      var current = null;
+      for (let i = 0; i < lis.length; i++) {
+        lis[i].setAttribute("draggable", true);
+        lis[i].ondragstart = function (e) {
+          //   console.log(this);
+            e.dataTransfer.setData("text",e.target.innerHTML);
+          current = this;
+        };
+        lis[i].ondragend = function (e) {
+          // 清除数据
+          e.dataTransfer.clearData("text");
+          current = null;
+        };
+      }
+
+      for (let j = 0; j < rqs.length; j++) {
+        rqs[j].ondragover = function (e) {
+          e.preventDefault();
+        };
+
+        rqs[j].ondrop = (function () {
+          var num = 0;
+          return function () {
+            num++;
+            nums[j].innerHTML = num;
+            console.log(current);
+            this.appendChild(current);
+          };
+        })(j);
+      }
+
+      //   垃圾
+      dele.ondragenter = function(e){               //鼠标拖动到目标对象范围内触发事件
+        this.style.color = "red";
+        this.style.backgroundColor = "skyblue"
+      }
+      dele.ondragover = function(e){
+        e.preventDefault();
+      }
+      dele.ondrop = function(e){
+          if(current){
+          var tip = e.dataTransfer.getData("text");
+            current.remove();
+            alert(tip+"被删除了")
+          }
+          this.style.color = "black";
+        this.style.backgroundColor = "grey"
+      }
+    </script>
+  </body>
+</html>

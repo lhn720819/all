@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>btn</button>
+    <div class="subnav">
+      <div class="wrap">
+        <a href="">
+          <img src="https://blz.nosdn.127.net/1/fsbnet/card-overwatch-CN-85c98611cefd3018.jpg" alt="" />
+        </a>
+        <a href="">
+          <img src="https://blz.nosdn.127.net/1/fsbnet/card-world-of-warcraft-CN-c4bebe45e5af0993.jpg" alt="" />
+        </a>
+        <a href="">
+          <img src="https://blz.nosdn.127.net/1/fsbnet/card-hearthstone-CN-538b49564ab2122a.jpg" alt="" />
+        </a>
+        <a href="">
+          <img src="https://blz.nosdn.127.net/1/fsbnet/card-heroes-of-the-storm-CN-bacafbbddcf92348.jpg" alt="" />
+        </a>
+        <a href="">
+          <img src="https://blz.nosdn.127.net/1/fsbnet/card-warcraft-3-reforged-CN.jpg" alt="" />
+        </a>
+        <a href="">
+          <img src="https://blz.nosdn.127.net/1/fsbnet/card-overwatch-CN-85c98611cefd3018.jpg" alt="" />
+        </a>
+        <a href="">
+          <img src="https://blz.nosdn.127.net/1/fsbnet/card-world-of-warcraft-CN-c4bebe45e5af0993.jpg" alt="" />
+        </a>
+        <a href="">
+          <img src="https://blz.nosdn.127.net/1/fsbnet/card-hearthstone-CN-538b49564ab2122a.jpg" alt="" />
+        </a>
+        <a href="">
+          <img src="https://blz.nosdn.127.net/1/fsbnet/card-heroes-of-the-storm-CN-bacafbbddcf92348.jpg" alt="" />
+        </a>
+      </div>
+    </div>
+    <p>dddddddddddddddddddddddd</p>
+    <style>
+      button {
+      }
+      .subnav {
+        background-color: rgba(21, 26, 35, 0.95);
+        padding: 50px 0;
+        visibility: hidden;
+        opacity: 0;
+        /* display: none; */
+        /* display 不支持过渡和动画 */
+        /* transition: all 3s; */
+      }
+      .subnav .wrap {
+        width: 1520px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+      }
+      .subnav .wrap a {
+        width: 150px;
+        height: 180px;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        transform: translateY(-20px);
+
+        opacity: 0.3;
+        
+        border: 1px solid rgb(173, 156, 148);
+      }
+      .subnav .wrap a img {
+        /* display: block; */
+        vertical-align: middle;
+        height: 100%;
+
+      }
+
+      .subnav .wrap a:hover {
+        border: 1px solid sienna;
+        filter: brightness(1.2);
+      }
+
+      .subnav.show {
+        /* display: block; */
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.3s;
+      }
+      .subnav.show .wrap a {
+        transition: all 0.3s;
+        transform: translateY(0px);
+        opacity: 1;
+      }
+
+      .subnav.show .wrap a:nth-child(1) {
+        transition-delay: 0.3s;
+      }
+      .subnav.show .wrap a:nth-child(2) {
+        transition-delay: 0.35s;
+      }
+      .subnav.show .wrap a:nth-child(3) {
+        transition-delay: 0.4s;
+      }
+      .subnav.show .wrap a:nth-child(4) {
+        transition-delay: 0.45s;
+      }
+      .subnav.show .wrap a:nth-child(5) {
+        transition-delay: 0.5s;
+      }
+      .subnav.show .wrap a:nth-child(6) {
+        transition-delay: 0.55s;
+      }
+      .subnav.show .wrap a:nth-child(7) {
+        transition-delay: 0.6s;
+      }
+      .subnav.show .wrap a:nth-child(8) {
+        transition-delay: 0.65s;
+      }
+      .subnav.show .wrap a:nth-child(9) {
+        transition-delay: 0.7s;
+      }
+
+      /* .subnav::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .subnav::before {
+        content: "";
+        display: table;
+      } */
+    </style>
+    <script>
+      document.querySelector("button").addEventListener("click", function () {
+        document.querySelector(".subnav").classList.toggle("show");
+      });
+    </script>
+  </body>
+</html>

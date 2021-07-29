@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">获取文本文件内容</button>
+    <script>
+        // 低版本 IE 浏览器的缓存问题
+
+        // 问题：在低版本的 IE 浏览器中，Ajax 请求有严重的缓存问题，即在请求地址不发生变化的情况下，只有第一次请求会真正发送请求到服务器端，后续的请求都会从浏览器的缓存中获取结果。
+        // 即使服务器端的数据更新了，客户端依然拿到的是缓存中的旧数据。
+        // get请求才有缓存问题,post请求没有缓存问题
+
+        // 解决方案：在请求地址的后面加请求参数，保证每一次请求中的请求参数的值不相同。 
+        //  xhr.open('get', 'http://www.example.com?t=' + Math.random());
+
+
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("get","http://localhost:3001/readFileContent?t=" + Math.random() );
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200 ){
+                    console.log( xhr.responseText );
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+#poster() {
+  top: #f6f7fc;
+  bottom: #d5e1e8;
+}
+@top: #f6f7fc;
+@bottom: #d5e1e8;
+
+.pos-ab() {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-image: linear-gradient(to bottom, @top 0%, @bottom 40%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // transform-style: preserve-3d;
+  perspective: 500px;
+  .card {
+    width: 320px;
+    height: 500px;
+
+    position: relative;
+
+    transition: all 30ms;
+
+    .bg {
+      background-image: url("https://www.17sucai.com/preview/1/2015-11-12/201509181601/img/effect-1/1.png");
+      background-size: 100% auto;
+      background-position: top center;
+      .pos-ab();
+      height: 100%;
+
+      // transform: rotateX(10deg) rotateY(5deg);
+      transition: inherit;
+    }
+    img {
+      .pos-ab();
+      z-index: 1;
+      transition: inherit;
+    }
+    .shine {
+      .pos-ab();
+      z-index: 9;
+      height: 100%;
+      // background-image: linear-gradient(0deg, rgba(255, 0, 0, 1), transparent);
+    }
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img
+      src="http://api.map.baidu.com/staticimage/v2?ak=izUj26u1CBbPdaKZjWfs6tPzIhOMtzaK&mcode=666666&center=116.403874,39.914888&width=300&height=200&zoom=11"
+      alt=""
+    />
+
+    <!-- getCurrentPosition（获取成功之后运行的函数） -->
+    <!-- <script>
+      navigator.geolocation.getCurrentPosition(
+        function (res) {
+          console.log(res.coords);
+
+          //   获取到坐标
+          document.querySelector("img").src =
+            "http://api.map.baidu.com/staticimage/v2?ak=izUj26u1CBbPdaKZjWfs6tPzIhOMtzaK&mcode=666666&center=" +
+            res.coords.longitude +
+            "," +
+            res.coords.latitude +
+            "&width=800&height=500&zoom=15";
+        },
+        function (err) {
+          console.log(err);
+        },
+        { enableHighAccuracy: true }
+      );
+    </script> -->
+
+    <script>
+      navigator.geolocation.watchPosition(
+        function (res) {
+          console.log(res.coords);
+
+          //   获取到坐标
+          document.querySelector("img").src =
+            "http://api.map.baidu.com/staticimage/v2?ak=izUj26u1CBbPdaKZjWfs6tPzIhOMtzaK&mcode=666666&center=" +
+            res.coords.longitude +
+            "," +
+            res.coords.latitude +
+            "&width=800&height=500&zoom=15";
+        },
+        function (err) {
+          console.log(err);
+        },
+        { enableHighAccuracy: true }
+      );
+
+      var batteryPromise = navigator.getBattery();
+      batteryPromise.then(function (res) {
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>

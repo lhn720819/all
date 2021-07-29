@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        .container{
+            border:1px solid blue;
+        }
+        .container .row {
+            height: 80px;
+            border:2px solid orange;
+        }
+        .container .row div[class*="col"]{
+            border:1px solid gray;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 栅格对齐方式 -->
+        <!-- 对于我们宽度不足 100%填充的行实现水平对齐方式，参考下表 -->
+        <!-- 垂直对齐方式 对应类名 -->
+        <!-- 居左(默认) .justify-content-start -->
+        <!-- 居中 .justify-content-center -->
+        <!-- 居右 .justify-content-end -->
+        <!-- 间隔相等(分散) .justify-content-around -->
+        <!-- 两端对齐(分散) .justify-content-between -->
+
+
+        <div class="row justify-content-start">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row justify-content-center">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+
+        <div class="row justify-content-end">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+
+        <div class="row justify-content-around">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row justify-content-between">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <!-- mt-5设置margin-top -->
+    <div class="container mt-5">
+        <!-- 
+            对于栅格系统中的行，我们可以其进行垂直对齐操作，如下表
+            垂直对齐方式 对应类名
+            居顶(默认) .align-items-start
+            居中 .align-items-center
+            居底 .align-items-end
+
+            注意:如果想要实现垂直对齐效果，需要给行.row 和每列 设置固定的高度
+        -->
+
+
+        <!-- 对于栅格系统中的列，也可以其进行垂直对齐操作，如下表 -->
+        <!-- 垂直对齐方式 对应类名 -->
+        <!-- 居顶(默认) .align-self-start -->
+        <!-- 居中 .align-self-center -->
+        <!-- 居底 .align-self-end -->
+
+
+        <div class="row align-items-start">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+        
+        <div class="row align-items-center">
+            <div class="col-md-2 align-self-start">1</div>
+            <div class="col-md-2 align-self-end">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row align-items-end">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-2">1</div>
+            <div class="col-md-2">2</div>
+            <div class="col-md-2">3</div>
+            <div class="col-md-2">4</div>
+        </div>
+    </div>
+
+</body>
+</html>

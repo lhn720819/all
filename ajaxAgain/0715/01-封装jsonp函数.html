@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 同源策略,浏览器为了保存用户数据的安全  要求两个网站之间 协议 域名 端口 都需要一致才是同源
+        // 协议 域名 端口 三个,只要有一个不一样,就是非同源
+        // A网站下的网页,只能请求A网站的服务器
+        // B网站下的网页,只能请求B网站的服务器
+        // A网站下的网页,不能请求B网站的服务器
+        // B网站下的网页,不能请求A网站的服务器
+
+        // 非同源的时候,就会出现跨域问题
+
+        // jsonp核心原理是利用script标签设置src引入文件的时候,不受到同源策略的限制
+        // jsonp是解决跨域请求的一种前端主要使用的技术
+
+        // jsonp不是ajax请求,模拟ajax请求的get请求
+
+        // 封装jsonp函数,用于发送jsonp请求
+        function jsonp( options ){
+            // 创建script标签
+            var newScript = document.createElement("script");
+
+            // 参数字符串
+            var params = "";
+
+            // 遍历options.data,拼接参数字符串
+            for(var attr in options.data ){
+                params += "&" + attr + "=" + options.data[attr]; 
+            }
+
+            // 去掉第一个&符号
+            params = params.substr(1);
+
+            // 随机函数名
+            var funName = "myjsonp" + Math.random().toString(16).substr(2);
+
+            // 定义了一个全局函数
+            window[funName] = options.success;
+
+            // 设置script标签的src属性
+            if( params.length == 0 ){
+                newScript.src = options.url + "?callback=" + funName;
+            }else{
+                newScript.src = options.url + "?callback=" + funName + "&" + params ;
+            }
+            
+            // 把script标签加到body标签中
+            document.body.appendChild( newScript );
+            
+            // 当script加载完毕以后,删除newScript
+            newScript.onload = function(){
+                newScript.remove();
+            }
+        }
+
+        jsonp({
+            url:"https://api.binstd.com/recipe/search",
+            data:{
+                "keyword":"白菜",
+                "num":10,
+                "appkey":"85d5254d9987cf31"
+            },
+            success:function( res ){
+                console.log( res );
+            }
+        })
+    </script>
+</body>
+</html>

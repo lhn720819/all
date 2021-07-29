@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body style="background: lightblue">
+    <canvas id="canvas" width="300" height="300"></canvas>
+
+    <button class="pencil">画笔</button>
+    <button class="eraser">橡皮</button>
+    <button class="reset">重置</button>
+    <a class="save" href="" download="" target="_blank">保存</a>
+
+    <script>
+      var canvas = document.querySelector("#canvas");
+      //   获取绘制环境
+      var context = canvas.getContext("2d");
+
+      var mode = "pencil";
+
+      // canvas.onmousemove = function (e) {
+      //   // console.log(e.offsetX, e.offsetY);
+      //   context.moveTo(e.offsetX, e.offsetY);
+      //   canvas.onmousedown = function (event) {
+      //     console.log(event);
+      //   }
+      //   canvas.onmouseup = function (event) {
+      //     console.log(event);
+      //   }
+      // };
+
+      canvas.onmousedown = function (event) {
+        // console.log(event.offsetX, event.offsetY);
+        var x = event.offsetX;
+        var y = event.offsetY;
+        context.moveTo(x, y);
+
+        var timeout = true;
+        canvas.onmousemove = function (e) {
+          if (timeout) {
+            timeout = false;
+
+            if (mode === "pencil") {
+              // 画笔
+              console.log(e.offsetX, e.offsetY);
+              context.lineTo(e.offsetX, e.offsetY);
+              context.stroke();
+            } else if (mode === "eraser") {
+              // 橡皮
+              context.clearRect(e.offsetX - 5, e.offsetY - 5, 10, 10);
+            }
+
+            setTimeout(() => {
+              timeout = true;
+            }, 30);
+          }
+        };
+      };
+      canvas.onmouseup = function (event) {
+        canvas.onmousemove = null;
+      };
+
+      document.querySelector(".eraser").onclick = function () {
+        mode = "eraser";
+      };
+      document.querySelector(".pencil").onclick = function () {
+        mode = "pencil";
+      };
+
+      document.querySelector(".reset").onclick = function () {
+        context.clearRect(0, 0, 300, 300);
+        context.beginPath();
+      };
+
+      document.querySelector(".save").onclick = function () {
+        var dataURL = canvas.toDataURL();
+        console.log(dataURL);
+        // window.open(dataURL, );
+        this.href = dataURL;
+        this.download = Date.now() + ".png";
+      };
+    </script>
+  </body>
+</html>

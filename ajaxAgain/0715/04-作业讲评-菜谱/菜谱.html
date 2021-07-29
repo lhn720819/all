@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入index.css样式文件 -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- 引入fontawesome字体图标库 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css" rel="stylesheet">
+    <style>
+        li {
+            list-style: none;
+        }
+
+        .detail {
+            position: absolute;
+            left: 550px;
+            top: 53px;
+            width: 300px;
+            display: none;
+        }
+
+        .detail .big_img img {
+            width: 300px;
+        }
+
+        .detail .title {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            color: #48494a;
+        }
+
+        .detail .materials ul li {
+            display: flex;
+            justify-content: space-between;
+            /* padding-right: 20px; */
+            height: 36px;
+            line-height: 36px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .detail .materials ul li:first-child {
+            border-top: 1px solid #ccc;
+        }
+
+        .detail .materials ul li span:nth-child(1) {
+            flex: 5;
+        }
+
+        .detail .materials ul li span:nth-child(2) {
+            flex: 3;
+        }
+
+        .detail .materials ul li span:nth-child(3) {
+            flex: 1;
+        }
+
+        .detail .step {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .detail .step p {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .detail .step img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" placeholder="请输入菜品名字" class="caiName" value="豆浆" /><button id="btnSearch">搜索</button>
+        <!-- 搜索图标 -->
+        <i class="fa fa-search"></i>
+    </div>
+
+    <div class="content">
+
+        <!-- <div class="item">
+            <div class="left fl">
+                <img src="http://api.jisuapi.com/recipe/upload/20160719/115142_55513.jpg">
+            </div>
+            <div class="right fr">
+                <h3>苹果豆浆</h3>
+                <p>鲜豆浆是唯一类似于动物蛋白质的植物性完全蛋白质，营养价值很高，并利于人体吸收。苹果牛奶豆浆更是最常见的一款豆浆。</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="left fl">
+                <img src="http://api.jisuapi.com/recipe/upload/20160719/115142_55513.jpg">
+            </div>
+            <div class="right fr">
+                <h3>苹果豆浆</h3>
+                <p>鲜豆浆是唯一类似于动物蛋白质的植物性完全蛋白质，营养价值很高，并利于人体吸收。苹果牛奶豆浆更是最常见的一款豆浆。</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="left fl">
+                <img src="http://api.jisuapi.com/recipe/upload/20160719/115142_55513.jpg">
+            </div>
+            <div class="right fr">
+                <h3>苹果豆浆</h3>
+                <p>鲜豆浆是唯一类似于动物蛋白质的植物性完全蛋白质，营养价值很高，并利于人体吸收。苹果牛奶豆浆更是最常见的一款豆浆。</p>
+            </div>
+        </div> -->
+
+    </div>
+
+    <!-- 对应菜品详情信息 -->
+    <div class="detail">
+        <div class="big_img"><img src="http://api.jisuapi.com/recipe/upload/20160719/115142_55513.jpg" /></div>
+
+        <div class="title detailCaiName">苹果豆浆</div>
+
+        <div class="desc">
+            鲜豆浆是唯一类似于动物蛋白质的植物性完全蛋白质，营养价值很高，并利于人体吸收。苹果牛奶豆浆更是最常见的一款豆浆。
+        </div>
+
+        <div class="title">用料</div>
+        
+        <div class="materials">
+            <ul>
+                <li><span>白砂糖</span><span>适量</span><span>&gt;</span></li>
+                <li><span>白砂糖</span><span>适量</span><span>&gt;</span></li>
+                <li><span>白砂糖</span><span>适量</span><span>&gt;</span></li>
+            </ul>
+        </div>
+
+        <div class="title">做法</div>
+        <div class="steps">
+            <div class="step">
+                <p>1.准备好材料</p>
+                <img src="http://api.jisuapi.com/recipe/upload/20160719/162654_99384.jpg" />
+            </div>
+
+            <div class="step">
+                <p>2.准备好材料</p>
+                <img src="http://api.jisuapi.com/recipe/upload/20160719/162654_99384.jpg" />
+            </div>
+
+            <div class="step">
+                <p>3.准备好材料</p>
+                <img src="http://api.jisuapi.com/recipe/upload/20160719/162654_99384.jpg" />
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        // 根据菜谱名称获取数据
+        function getDataByCaiName( myCaiName ){
+            // ajax请求数据
+            $.ajax({
+                url:"https://api.binstd.com/recipe/search",
+                data:{
+                    "keyword" : myCaiName,
+                    "num":10,
+                    "appkey":"85d5254d9987cf31"
+                },
+                // 设置为jsonp请求
+                dataType:"jsonp",
+                success:function( res ){
+                    if( res.status != 0 ){
+                        $(".content").html( res.msg );
+                        $(".detail").hide();
+                        return;
+                    }
+
+                    // 获取数据
+                    var data = res.result.list;
+
+                    // 渲染数据
+                    renderData( data );
+
+                    // 显示详情数据
+                    getDataByCaiId( data[0].id );
+                }
+            });
+        }
+
+        // 渲染菜谱列表
+        function renderData( data ){
+            // es6的模板字符串
+            var htmlStr = ``;
+
+            // 遍历data数据,拼接字符串
+            $.each( data , function( index, item ){
+                // 拼接字符串
+                htmlStr += `
+                <div class="item">
+                    <div class="left fl">
+                        <img src="${item.pic}" data-id="${item.id}">
+                    </div>
+                    <div class="right fr">
+                        <h3>${item.name}</h3>
+                        <p>${item.content}</p>
+                    </div>
+                </div>
+                `;
+            });
+
+            // 设置.content的标签内容
+            $(".content").html( htmlStr );
+        }
+
+        // 搜索按钮点击事件,查询对应菜谱
+        $("#btnSearch").click(function(){
+            // 获取要搜索的菜谱名称
+            var caiNameVal = $(".caiName").val();
+            // 调用方法
+            getDataByCaiName( caiNameVal );
+        });
+
+        // 根据菜谱id获取数据
+        function getDataByCaiId( currentCaiId ){
+            // 发送ajax请求
+            $.ajax({
+                url:"https://api.binstd.com/recipe/detail",
+                data:{
+                    "id" : currentCaiId,
+                    "appkey":"85d5254d9987cf31"
+                },
+                // 设置为jsonp请求
+                dataType:"jsonp",
+                success:function( res ){
+                    // 获取数据
+                    var data = res.result;
+                    
+                    // 设置图片
+                    $(".detail .big_img img").prop("src" , data.pic );
+
+                    // 设置菜品名称
+                    $(".detail .detailCaiName").html( data.name );
+
+                    // 设置菜品描述
+                    $(".detail .desc").html( data.content );
+
+                    // 设置用料
+                    var htmlStr1 = ``;
+
+                    $.each( data.material ,function( index, item ){
+                        htmlStr1 += `<li>
+                            <span>${item.mname}</span>
+                            <span>${item.amount}</span>
+                            <span>&gt;</span>
+                        </li>`;
+                    })
+                    
+                    $(".materials ul").html( htmlStr1 );
+
+                    // 设置做法
+                    var htmlStr2 = ``;
+
+                    $.each( data.process ,function( index, item ){
+                        htmlStr2 += `
+                        <div class="step">
+                            <p>${index+1}.${item.pcontent}</p>
+                            <img src="${item.pic}">
+                        </div>
+                        `;
+                    })
+
+                    $(".steps").html( htmlStr2 );
+                    
+                    
+                    // 显示菜谱详情层
+                    $(".detail").show();
+                }
+            });
+        }
+
+        // 给左侧菜谱列表中的图片绑定鼠标点击事件
+        $(".content").on("click" , ".item .left img",function(){
+            // 获取自定义属性 data-id
+            var currentCaiId = $(this).attr("data-id");
+            // 根据菜谱id获取数据
+            getDataByCaiId( currentCaiId );
+        });
+
+        // 默认显示豆浆相关菜谱
+        getDataByCaiName("豆浆");
+
+        // 给文本框绑定键盘事件
+        $(".caiName").keyup(function( e ){
+            if( e.keyCode == 13 ){
+                $("#btnSearch").trigger("click");
+            }
+        })
+    </script>
+</body>
+
+</html>

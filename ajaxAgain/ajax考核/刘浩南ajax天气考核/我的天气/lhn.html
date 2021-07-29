@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/demo.css" />
+  </head>
+  <body>
+    <div class="box">
+      <h1>天气预报</h1>
+      <div class="search">
+        <div class="bxsearch"><input type="text" /> <button>搜索</button></div>
+      </div>
+      <div class="citylist">
+        <span>热门城市:</span>
+        <ul>
+          <li>广州</li>
+          <li>中山</li>
+          <li>深圳</li>
+          <li>佛山</li>
+          <li>南京</li>
+          <li>北京</li>
+          <li>重庆</li>
+        </ul>
+        <span class="change">换一换</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-arrow-counterclockwise"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"
+          />
+          <path
+            d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"
+          />
+        </svg>
+      </div>
+      <div class="content">
+        <ul>
+          <li>
+            <img src="../images/leizhenyu.png" />
+            <p class="weather">晴</p>
+            <p class="temp">最低温 -1111°c ~ 最高温 -11111°C</p>
+            <p class="date">2000-01-01星期一</p>
+            <p>北风</p>
+            <p>3级</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="./jquery.min.js"></script>
+    <script>
+      $("button").on("click", function () {
+        var val = $("input").val();
+        getcityname(val);
+        if (val == "") {
+          alert("请输入城市名!!");
+          return;
+        }
+      });
+
+      function getcityname(name) {
+        $.ajax({
+          type: "get",
+          url: "http://api.tianapi.com/txapi/tianqi/index",
+          data: {
+            city: name,
+            key: "3dbaa0e980102b8240978157b12d4693",
+          },
+          success: function (res) {
+            if (res.code == 200) {
+              console.log(res);
+            } else {
+              $(".box").html("大哥，没这个城市！！！");
+            }
+            var data = res.newslist;
+            renderData(data);
+          },
+        });
+      }
+      getcityname("广州");
+      $("input").val("广州");
+      function renderData(value) {
+        var str = `<ul>`;
+        $.each(value, function (index, item) {
+          str += `
+                <li>
+                          <img src='../images/${item.weatherimg}' >
+                          <p class='weather'>${item.weather}</p>
+                          <p class='temp'>最低温 ${item.lowest}°c~最高温 ${item.highest}</p>
+                          <p class="date">${item.date}${item.week}</p>
+                          <p>${item.wind}</p>
+                          <p>${item.windspeed}级</p>
+                  </li>
+                          `;
+        });
+        str += `</ul>`;
+        $(".content").html(str);
+      }
+      var hotcity = [
+        "北京",
+        "上海",
+        "广州",
+        "深圳",
+        "苏州",
+        "大连",
+        "重庆",
+        "杭州",
+        "无锡",
+        "天津",
+        "佛山",
+        "宁波",
+        "南京",
+        "成都",
+        "东莞",
+        "武汉",
+        "青岛",
+        "沈阳",
+        "烟台",
+        "唐山",
+        "济南",
+        "哈尔滨",
+        "石家庄",
+        "郑州",
+        "泉州",
+        "温州",
+        "长沙",
+        "南通",
+        "长春",
+        "潍坊",
+        "绍兴",
+        "福州",
+        "淄博",
+        "大庆",
+        "常州",
+        "台州",
+        "济宁",
+        "东营",
+        "西安",
+        "徐州",
+        "临沂",
+        "威海",
+        "嘉兴",
+        "邯郸",
+        "洛阳",
+        "沧州",
+        "金华",
+        "昆明",
+        "南阳",
+        "保定",
+      ];
+
+      //   笨方法难受
+      $(".change").on("click", function () {
+        // var index1 = Math.floor(Math.random() * hotcity.length);
+        // var index2 = Math.floor(Math.random() * hotcity.length);
+        // var index3 = Math.floor(Math.random() * hotcity.length);
+        // var index4 = Math.floor(Math.random() * hotcity.length);
+        // var index5 = Math.floor(Math.random() * hotcity.length);
+        // $(".citylist ul li").eq(0).html(hotcity[index1]);
+        // $(".citylist ul li").eq(1).html(hotcity[index2]);
+        // $(".citylist ul li").eq(2).html(hotcity[index3]);
+        // $(".citylist ul li").eq(3).html(hotcity[index4]);
+        // $(".citylist ul li").eq(4).html(hotcity[index5]);
+        // var head = $(".citylist ul li").eq(0).html();
+
+        // $("input").val(head);
+        // getcityname(head);
+        hotcity.sort(function () {
+          //排序
+          return Math.random() - 0.5; //小于1.0大于0.0的小数
+        });
+        var currentcity = hotcity.slice(0, 7);
+        var newhotcity = ``;
+
+        $.each(currentcity, function (index, item) {
+          newhotcity += `<li>${item}</li>`;
+        });
+        $(".citylist ul").html(newhotcity);
+        $("input").val(currentcity[0]);
+        getcityname(currentcity[0]);
+      });
+
+      $("input").keyup(function (e) {
+        if (e.keyCode == 13) {
+          $("button").click();
+        }
+      });
+
+      $(".citylist ul").on("click", "li", function () {
+        var clickcity = $(this).text();
+        $("input").val(clickcity);
+        getcityname(clickcity);
+      });
+    </script>
+  </body>
+</html>

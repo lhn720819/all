@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>当前是s1服务器下的html页面,向s2服务器下的get02请求</button>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $("button").click(function(){
+            /* $.get("http://localhost:3002/get02",function( res ){
+                console.log( res );
+            }); */
+
+            $.get("http://localhost:3001/get02",function( res ){
+                console.log( res );
+            });
+        })
+    </script>
+</body>
+</html>

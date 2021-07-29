@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>获取文本文件内容</button>
+    <p></p>
+
+    <script>
+        // AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。
+
+        // AJAX 不是新的编程语言，而是一种使用现有标准的新方法。(ajax就是js中的一个内置对象)
+
+        // AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。
+
+        var btn = document.querySelector("button");
+        var oP = document.querySelector("p");
+
+        btn.onclick = function(){
+            // console.log( XMLHttpRequest );
+
+            // ajax实现步骤如下
+            // 1. 创建ajax对象   找一个人 
+            var xhr = new XMLHttpRequest(); 
+            // console.log( xhr );
+
+            // 2. 初始化ajax对象  xhr.open("请求方式get或者post", "请求地址或者文件所在路径")  告诉他,让他偷偷帮你做什么事情
+            
+            xhr.open("get", "./a.txt" );
+
+            // 3. 发送请求  xhr.send()   去做吧
+            xhr.send();
+
+            // 4. 处理响应  xhr.onload = function(){}  情况如何,做的怎么样
+            xhr.onload = function(){
+                // xhr.responseText 获取响应的文本内容
+                // console.log( xhr.responseText );
+
+                // 设置p段落的标签内容
+                oP.innerHTML = xhr.responseText;
+            }
+        }
+    </script>
+</body>
+</html>

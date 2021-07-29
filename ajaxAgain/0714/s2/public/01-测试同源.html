@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>向s1服务器get01发起请求</button>
+    <button>向s2服务器get01发起请求</button>
+
+    <script src="js/ajax.js"></script>
+    <script>
+        var btns = document.querySelectorAll("button");
+        btns[0].onclick = function(){
+            ajax({
+                type:"get",
+                url:"http://localhost:3001/get01",
+                success:function( res ){
+                    console.log( res );
+                }
+            });
+        }
+
+        btns[1].onclick = function(){
+            ajax({
+                type:"get",
+                url:"http://localhost:3002/get01",
+                success:function( res ){
+                    console.log( res );
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">发送get04请求</button>
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "http://localhost:3000/get04");
+            xhr.send();
+            // xhr.onload事件有兼容问题,  在IE9之前是无法触发的
+            // 所以我们需要使用另一种事件xhr.onreadystatechange替代xhr.onload事件
+             
+            // xhr.onreadystatechange 当准备状态改变的时候触发这个事件
+            
+            xhr.onload = function(){
+                console.log( xhr.responseText );
+            }
+        }
+    </script>
+</body>
+</html>

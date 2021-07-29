@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box"></div>
+    <button>btn</button>
+
+    <input type="number" oninput="inputHandler(event)" />
+    <script>
+      console.log(typeof Worker);
+
+      var w = new Worker("./demo_workers.js");
+
+      //   console.log(w);
+      w.onmessage = function (event) {
+        // console.log(event.data);
+        document.querySelector(".box").innerText = event.data;
+      };
+
+      document.querySelector("button").onclick = function () {
+        //   终止子线程
+        w.terminate();
+      };
+
+      //   web worker 通常不用于如此简单的脚本，而是用于更耗费 CPU 资源的任务
+
+      function inputHandler(event) {
+        // console.log(event);
+        w.postMessage(event.target.value);
+      }
+    </script>
+    <!-- <script src="demo_workers.js"></script> -->
+  </body>
+</html>
